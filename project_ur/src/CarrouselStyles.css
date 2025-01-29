@@ -1,0 +1,45 @@
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px; /* Ancho de las flechas */
+  height: 50px; /* Alto de las flechas */
+  background-color: rgba(255, 154, 158, 0.8); /* Fondo translúcido */
+  color: white; /* Color del ícono */
+  border-radius: 50%; /* Redondeado perfecto */
+  border: 2px solid white; /* Borde blanco para destacar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-prev {
+  left: 20px; /* Ajusta la posición izquierda */
+}
+
+.custom-next {
+  right: 20px; /* Ajusta la posición derecha */
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: #ff9a9e; /* Fondo más brillante al pasar el mouse */
+  border-color: #f6d365; /* Cambia el color del borde */
+  transform: scale(1.2); /* Ampliación al hacer hover */
+}
+
+
+/* Paginación */
+.swiper-pagination-bullet {
+  background-color: #ff9a9e !important;
+  opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f6d365 !important;
+  transform: scale(1.2);
+}
