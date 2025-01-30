@@ -96,3 +96,9 @@ button, a {
   margin: 10px 0; /* Espaciado */
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para resaltar */
 }
+/* Ocultar el navbar cuando el modal está abierto */
+
+
+.navbar.hidden {
+  display: none; /* Oculta el navbar */
+}

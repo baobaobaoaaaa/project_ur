@@ -5,15 +5,28 @@ import AnimatedPlayer from './components/AnimatedPlayer';
 import { motion } from "framer-motion";
 import Navbar from './components/Navbar';
 import MessageSection from './components/MessageSection';
+import { useState } from 'react';
 
 function App() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div style={{ position: "relative", minHeight: "100vh", overflowX: "hidden" }}>
       {/* Navbar */}
-      <div className='navbar'>
-        <Navbar />
+
+      <div
+       
+        >
+        {!isModalOpen &&(
+            <div className='navbar'>
+          <Navbar />
+        </div>
+        )}  
       </div>
       
+
+      {/* Fin Navbar */}
       <div>
       {/* Fondo animado */}
       <ParticlesBackground />
@@ -40,7 +53,7 @@ function App() {
         {/* Carrusel */}
         <section style={{ marginBottom: "50px" }}>
           <div >
-          <AnimatedCarousel />
+          <AnimatedCarousel setIsModalOpen={setIsModalOpen} />
           </div>
           
         </section>
@@ -74,10 +87,12 @@ function App() {
         </section>
 
         {/* Reproductor */}
-        <section style={{ textAlign: "center", padding: "20px 0" }}>
-          <h1 style={{ color: "white", marginBottom: "20px" }}>Lorem psi</h1>
-          <AnimatedPlayer />
-        </section>
+        <div id="player">
+          <section style={{ textAlign: "center", padding: "20px 0" }}>
+            <h1 style={{ color: "white", marginBottom: "20px" }}>Lorem psi</h1>
+            <AnimatedPlayer />
+          </section>
+        </div>
       </div>
     </div>
   );
