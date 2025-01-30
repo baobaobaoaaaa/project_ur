@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Navbar from './components/Navbar';
 import MessageSection from './components/MessageSection';
 import { useState } from 'react';
+import PSPVideoPlayer from './components/PSPVideoPlayer';
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
         marginTop: "80px" // Espaciado para evitar que el Navbar tape el contenido
       }}>
         {/* Título */}
-        <header className="App-header" style={{ textAlign: "center", color: "white", marginBottom: "20px" }}>
+        <header className="App-header" style={{ textAlign: "center", color: "white", marginBottom: "20px" }} id='carrusel'>
           <motion.h1
             style={{ textAlign: "center", color: "white" }}
             initial={{ opacity: 0 }}
@@ -51,13 +52,11 @@ function App() {
         </header>
 
         {/* Carrusel */}
-        <section style={{ marginBottom: "50px" }}>
-          <div >
-          <AnimatedCarousel setIsModalOpen={setIsModalOpen} />
-          </div>
-          
-        </section>
-
+        <div>
+          <section style={{ marginBottom: "50px" }}>
+            <AnimatedCarousel setIsModalOpen={setIsModalOpen} />
+          </section>
+        </div>
         {/* Seccion de mensajes de prueba */}
         <section>
           <MessageSection title="Mensaje 1"
@@ -93,6 +92,12 @@ function App() {
             <AnimatedPlayer />
           </section>
         </div>
+
+        {/* PSP */}
+        <section style={{ textAlign: "center", padding: "20px 0" }}>
+          <h1 style={{ color: "white", marginBottom: "20px" }}>PSP</h1>
+          <PSPVideoPlayer />
+        </section>
       </div>
     </div>
   );

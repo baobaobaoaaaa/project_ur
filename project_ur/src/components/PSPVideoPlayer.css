@@ -1,0 +1,51 @@
+.psp-container {
+    position: relative;
+    width: 600px; /* Ajusta al tamaño de la imagen */
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .psp-frame {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .psp-video-container {
+    position: absolute;
+    top: 25%; /* Ajusta según el marco */
+    left: 12%; /* Ajusta según el marco */
+    width: 76%; /* Ajusta según el marco */
+    height: 40%; /* Ajusta según el marco */
+    overflow: hidden;
+  }
+  
+  .psp-video {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px; /* Opcional: bordes redondeados */
+  }
+  
+  .psp-button {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .play {
+    top: 80%; /* Ajusta según el marco */
+    left: 45%;
+  }
+  
+  .pause {
+    top: 80%;
+    left: 50%;
+  }
+  
+  .volume {
+    top: 80%;
+    left: 55%;
+  }
+  

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   return (
     <nav style={navbarStyle}>
-      <NavButton text="🌸 Carrusel" onClick={() => window.scrollTo(0, 0)} />
+      <NavButton text="🌸 Carrusel" onClick={() => document.getElementById("carrusel").scrollIntoView()} />
       <NavButton text="🎶 Reproductor" onClick={() => document.getElementById("player").scrollIntoView()} />
       <NavButton text="📞 Contacto" onClick={() => document.getElementById("footer").scrollIntoView()} />
     </nav>
