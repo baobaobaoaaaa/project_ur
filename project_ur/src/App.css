@@ -115,9 +115,9 @@ button, a {
 
 .psp-video-container {
   position: absolute !important;
-  top: 27% !important;
+  top: 26% !important;
   left: 23% !important;
-  width: 54% !important;
+  width: 53% !important;
   height: 48% !important;
   overflow: hidden !important;
   z-index: 1 !important;
@@ -129,4 +129,55 @@ button, a {
   height: 100% !important;
   object-fit: cover !important;
   border: none !important;
+}
+.psp-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Alinea los botones verticalmente */
+  gap: 20px; /* Espaciado claro entre los botones */
+}
+
+.psp-button {
+  padding: 10px 20px; /* Espacio interno del botón */
+  font-size: 16px; /* Tamaño de la fuente */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #ff758c; /* Fondo del botón */
+  color: white; /* Color del texto */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efecto al pasar el mouse */
+}
+
+.psp-button:hover {
+  background-color: #ff5068; /* Cambio de color al pasar el mouse */
+}
+
+.psp-play-button {
+  position: absolute;
+  width: 55px; /* Ajusta el tamaño del botón */
+  height: 50px; /* Ajusta el tamaño del botón */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  background:url('assets/psp_transparente_equis.png')no-repeat center center;
+  outline: none;
+  right: 11%;
+  top: 51%;
+}
+.psp-pause-button {
+  position: absolute;
+  width: 53px; /* Ajusta el tamaño del botón */
+  height: 56px; /* Ajusta el tamaño del botón */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  background:url('assets/psp_transparente_tri.png')no-repeat center center;
+  outline: none;
+  right: 11%;
+  top: 34%;
 }
