@@ -35,7 +35,7 @@ const ParticlesBackground = () => {
           },
           modes: {
             repulse: { distance: 100, duration: 0.4 }, // Distancia y duración al alejarse
-            push: { quantity: 5 }, // Cantidad de partículas añadidas al hacer clic
+            push: { quantity: 3 }, // Cantidad de partículas añadidas al hacer clic
           },
         },
       }}
