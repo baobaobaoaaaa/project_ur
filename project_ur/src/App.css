@@ -1,4 +1,4 @@
-body, html {
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -6,6 +6,20 @@ body, html {
   background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb); /* Fondo degradado estático */
   font-family: 'Poppins', sans-serif;
   color: white;
+  background-size: cover; /* Tamaño del degradado */
+  animation: gradientBG 10s ease infinite; /* Animación del degradado */
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%; /* Inicio del degradado */
+  }
+  50% {
+    background-position: 100% 50%; /* Mitad del degradado */
+  }
+  100% {
+    background-position: 0% 50%; /* Final del degradado */
+  }
 }
 
 .app-container {
@@ -101,4 +115,12 @@ button, a {
 
 .navbar.hidden {
   display: none; /* Oculta el navbar */
+}
+#tsparticles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Envía las partículas al fondo */
 }
