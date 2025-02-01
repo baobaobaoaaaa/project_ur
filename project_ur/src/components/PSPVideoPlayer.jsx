@@ -23,6 +23,7 @@ const PSPVideoPlayer = ({onAchievementUnlock}) => {
     const handleVideoEnd = () => {
       const newCount = playCount + 1;
       setPlayCount(newCount);
+      console.log(`Reproducciones: ${newCount}`);
       if (newCount === 3 && onAchievementUnlock) {
         onAchievementUnlock("Video Master","Has reproducido 3 videos.");
       }
@@ -47,11 +48,24 @@ const PSPVideoPlayer = ({onAchievementUnlock}) => {
       // Estado para manejar el índice del video actual
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
+
     // Función para cambiar al siguiente video
     const nextVideo = () => {
       setCurrentVideoIndex((prevIndex) =>
         prevIndex === videos.length - 1 ? 0 : prevIndex + 1
       );
+      incrementPlayCount();
+    };
+
+    // Función para incrementar el contador de reproducciones
+    const incrementPlayCount = () => {
+      const newCount = playCount + 1;
+      setPlayCount(newCount);
+      console.log(`Reproducciones: ${newCount}`);
+
+      if (newCount === 3 && onAchievementUnlock) {
+        onAchievementUnlock("Video Master","Has reproducido 3 videos.");
+      }
     };
 
     // Función para cambiar al video anterior
