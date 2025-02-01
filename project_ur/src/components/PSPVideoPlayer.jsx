@@ -8,7 +8,26 @@ import video4 from "project_ur/src/assets/video/locurabao2.mp4";
 
 
 
-const PSPVideoPlayer = () => {
+const PSPVideoPlayer = ({onAchievementUnlock}) => {
+
+      // Logros
+
+    const [playCount, setPlayCount] = useState(0);
+
+    const handleVideoPlay = () => {
+      if (onAchievementUnlock) {
+        onAchievementUnlock("Primer Recuerdo","Has reproducido tu primer video.");
+      }
+    }
+
+    const handleVideoEnd = () => {
+      const newCount = playCount + 1;
+      setPlayCount(newCount);
+      if (newCount === 3 && onAchievementUnlock) {
+        onAchievementUnlock("Video Master","Has reproducido 3 videos.");
+      }
+    }
+      // Fin logros
 
     const videos = [
       {
@@ -67,7 +86,15 @@ const PSPVideoPlayer = () => {
 
       {/* Video dentro del marco */}
       <div className="psp-video-container">
-        <video loop autoplay className="psp-video" ref={videoRef} key={videos[currentVideoIndex].src}>
+        <video loop 
+          className="psp-video" 
+          ref={videoRef} 
+          key={videos[currentVideoIndex].src} 
+          onPlay={handleVideoPlay}
+          onEnded={handleVideoEnd}
+          >
+          
+          
           <source src={videos[currentVideoIndex].src} type="video/mp4" />
           Tu navegador no soporta el elemento de video.
         </video>

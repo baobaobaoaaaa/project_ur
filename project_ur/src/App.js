@@ -5,11 +5,37 @@ import AnimatedPlayer from './components/AnimatedPlayer';
 import { motion } from "framer-motion";
 import Navbar from './components/Navbar';
 import MessageSection from './components/MessageSection';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import PSPVideoPlayer from './components/PSPVideoPlayer';
 import ShootingStars from './components/ShootingStars';
+import "project_ur/src/components/achievementsData.js"
 
 function App() {
+
+
+  // Logros
+  // Logros
+    const [achievements, setAchievements] = useState([]);
+    const unlockedAchievements = useRef(new Set()); // Usamos un Set para evitar duplicados
+
+    const onAchievementUnlock = (title, description) => {
+      if (!unlockedAchievements.current.has(title)) {
+        unlockedAchievements.current.add(title); // Marcamos el logro como desbloqueado
+
+        // Agregamos el logro a la lista para mostrarlo visualmente
+        setAchievements((prev) => [...prev, { title, description }]);
+
+        console.log(`¡Logro desbloqueado!: ${title} - ${description}`);
+
+        // Removemos la visualización después de 5 segundos
+        setTimeout(() => {
+          setAchievements((prev) => prev.filter((a) => a.title !== title));
+        }, 5000);
+      }
+    };
+
+
+  // Fin logros
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -91,15 +117,40 @@ function App() {
         <div id="player">
           <section style={{ textAlign: "center", padding: "20px 0" }}>
             <h1 style={{ color: "white", marginBottom: "20px" }}>Lorem psi</h1>
-            <AnimatedPlayer />
+            <AnimatedPlayer onAchievementUnlock={onAchievementUnlock}/>
           </section>
         </div>
 
         {/* PSP */}
         <section style={{ textAlign: "center", padding: "20px 0" }}>
           <h1 style={{ color: "white", marginBottom: "20px" }}>PSP</h1>
-          <PSPVideoPlayer />
+          <PSPVideoPlayer onAchievementUnlock={onAchievementUnlock}/>
         </section>
+
+        {/* Logros */}
+        {/* Logros */}
+     {/* Logros */}
+        <div style={{ position: "fixed", top: "80px", right: "10px", zIndex: 9999 }}>
+            {achievements.map((achievement, index) => (
+                <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 50 }}
+                transition={{ duration: 0.5 }}
+                key={index}
+                style={{
+                    backgroundColor: "#ffe4e1",
+                    padding: "10px 20px",
+                    margin: "10px 0",
+                    borderRadius: "5px",
+                    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                }}
+            >
+                <strong>{achievement.title}</strong>
+                <p>{achievement.description}</p>
+            </motion.div>
+            ))}
+        </div>
       </div>
     </div>
   );

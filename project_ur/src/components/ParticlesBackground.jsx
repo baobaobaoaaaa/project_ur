@@ -16,7 +16,7 @@ const ParticlesBackground = () => {
           color: { value: "transparent" }, // Fondo negro
         },
         particles: {
-          number: { value: 50 }, // Cantidad de partículas
+          number: { value: 40, limit:80 }, // Cantidad de partículas
           color: { value: ["#ffffff", "#f4f4f4", "#dcdcdc"], }, // Color de las partículas
           shape: {
             type: "char",
