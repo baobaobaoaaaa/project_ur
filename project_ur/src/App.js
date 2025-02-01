@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import MessageSection from './components/MessageSection';
 import { useState } from 'react';
 import PSPVideoPlayer from './components/PSPVideoPlayer';
+import ShootingStars from './components/ShootingStars';
 
 function App() {
 
@@ -28,9 +29,10 @@ function App() {
       
 
       {/* Fin Navbar */}
-      <div>
+      <div style={{zIndex: -1}}>
       {/* Fondo animado */}
       <ParticlesBackground />
+      <ShootingStars />
       </div>
       {/* Contenido principal */}
       <div style={{ 

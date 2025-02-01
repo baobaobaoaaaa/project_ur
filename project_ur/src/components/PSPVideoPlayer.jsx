@@ -1,6 +1,5 @@
 import React,{useRef, useState} from "react";
 import "project_ur/src/components/PSPVideoPlayer.css"; // Archivo CSS para estilos
-import videoSrc from "project_ur/src/assets/video/ervideo.mp4";
 import pspFrame from "project_ur/src/assets/psp_transparente.png"; // Nueva imagen transparente
 import video1 from "project_ur/src/assets/video/ervideo.mp4";
 import video2 from "project_ur/src/assets/video/eldenring.mp4";

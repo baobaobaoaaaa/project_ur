@@ -13,29 +13,56 @@ const ParticlesBackground = () => {
       init={particlesInit}
       options={{
         background: {
-          color: { value: "ff9a9e" }, // Fondo negro
+          color: { value: "transparent" }, // Fondo negro
         },
         particles: {
-          number: { value: 100 }, // Cantidad de partículas
-          color: { value: "#ffffff" }, // Color de las partículas
-          shape: { type: "star" }, // Forma de las partículas
-          opacity: { value: 0.5 }, // Opacidad de las partículas
-          size: { value: 5 }, // Tamaño de las partículas
+          number: { value: 50 }, // Cantidad de partículas
+          color: { value: ["#ffffff", "#f4f4f4", "#dcdcdc"], }, // Color de las partículas
+          shape: {
+            type: "char",
+            character: [
+              { value: "🌟", font: "Arial", style: "", weight: "400" },
+              { value: "✨", font: "Arial", style: "", weight: "400" },
+              { value: "🌙", font: "Arial", style: "", weight: "400" },
+              { value: "☁️", font: "Arial", style: "", weight: "400" },
+              { value: "💫", font: "Arial", style: "", weight: "400" },
+              { value: "⭐", font: "Arial", style: "", weight: "400" },
+              { value: "🌺", font: "Arial", style: "", weight: "400" },
+              { value: "🍄", font: "Arial", style: "", weight: "400" },
+              { value: "✿", font: "Arial", style: "", weight: "400" },
+              { value: "🔮", font: "Arial", style: "", weight: "400" },
+            ],
+          },
+          opacity: { value: 0.9, random:true }, // Opacidad de las partículas
+          size: { value: 20, random:{enable:true, minimunValue:5,maximumValue:30}, // Tamaño de las partículas
+              animation:{
+                enable:true,
+                speed:3,
+                sync:true,
+              }
+        
+        }, // Tamaño de las partículas
           move: {
             enable: true,
-            speed: 2, // Velocidad de movimiento
+            speed: {min:0.2,max:2}, // Velocidad de movimiento
             direction: "none",
             outModes: { default: "out" }, // Partículas salen del contenedor
+            path:{
+              enable: true,
+              clamp: false,
+              delay: 0.1,
+            }
           },
         },
         interactivity: {
           events: {
             onHover: { enable: true, mode: "repulse" }, // Se alejan del mouse
             onClick: { enable: true, mode: "push" }, // Agregar partículas al hacer clic
+            resize: true, // Redimensionar el contenedor
           },
           modes: {
             repulse: { distance: 100, duration: 0.4 }, // Distancia y duración al alejarse
-            push: { quantity: 3 }, // Cantidad de partículas añadidas al hacer clic
+            push: { quantity: 5 }, // Cantidad de partículas añadidas al hacer clic
           },
         },
       }}
