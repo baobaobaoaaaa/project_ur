@@ -10,6 +10,10 @@ import PSPVideoPlayer from './components/PSPVideoPlayer';
 import ShootingStars from './components/ShootingStars';
 import "project_ur/src/components/achievementsData.js"
 
+import iconCarrusel from "project_ur/src/components/icons/cinema.png"
+import iconMusic from "project_ur/src/components/icons/music-player.png"
+import iconGame from "project_ur/src/components/icons/game-controller.png"
+
 function App() {
 
 
@@ -163,69 +167,164 @@ function App() {
         {/* Logros */}
         {/* Logros */}
      {/* Achievements Section */}
-     <div style={{ position: "fixed", top: "80px", right: "10px", zIndex: 9999 }}>
-        {/* Song Achievements */}
-        {songAchievements.map((achievement) => (
-          <motion.div
-            key={achievement.id}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              backgroundColor: "#d1f7c4",
-              padding: "10px 20px",
-              margin: "10px 0",
-              borderRadius: "5px",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <strong>{achievement.title}</strong>
-            <p>{achievement.description}</p>
-          </motion.div>
-        ))}
-
-        {/* Video Achievements */}
-        {videoAchievements.map((achievement) => (
-          <motion.div
-            key={achievement.id}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              backgroundColor: "#f7d1d1",
-              padding: "10px 20px",
-              margin: "10px 0",
-              borderRadius: "5px",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <strong>{achievement.title}</strong>
-            <p>{achievement.description}</p>
-          </motion.div>
-        ))}
-        {/* Carrusel Achievements */}
-        {carruselAchievements.map((achievement) => (
-          <motion.div
-            key={achievement.id}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.5 }}
-            style={{
-              backgroundColor: "#d1f7f7",
-              padding: "10px 20px",
-              margin: "10px 0",
-              borderRadius: "5px",
-              boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <strong>{achievement.title}</strong>
-            <p>{achievement.description}</p>
-          </motion.div>
-        ))}
+<div style={{ position: "fixed", top: "80px", right: "10px", zIndex: 9999 }}>
+  {/* Song Achievements */}
+  {songAchievements.map((achievement) => (
+    <motion.div
+      key={achievement.id}
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 50 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        background: "linear-gradient(135deg, #9be15d, #00e3ae)", // Degradado verde
+        color: "#fff",
+        padding: "15px 20px",
+        margin: "10px 0",
+        borderRadius: "15px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+      }}
+    >
+      <div
+        style={{
+          width: "40px",
+          height: "40px",
+          background: "rgba(255, 255, 255, 0.3)",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "20px",
+          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <img
+          src={iconMusic}
+          alt='Icono de musica'
+          style={
+            {width: "30px",
+            height: "30px",
+            marginRigth: "10px",}
+          }
+        />
       </div>
+      <div>
+        <strong style={{ fontSize: "1.1rem" }}>{achievement.title}</strong>
+        <p style={{ margin: "5px 0", fontSize: "0.9rem" }}>
+          {achievement.description}
+        </p>
+      </div>
+    </motion.div>
+  ))}
+
+  {/* PSP Video Achievements */}
+  {videoAchievements.map((achievement) => (
+    <motion.div
+      key={achievement.id}
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 50 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        background: "linear-gradient(135deg, #ff758c, #ff7eb3)", // Degradado rosado
+        color: "#fff",
+        padding: "15px 20px",
+        margin: "10px 0",
+        borderRadius: "15px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+      }}
+    >
+      <div
+        style={{
+          width: "40px",
+          height: "40px",
+          background: "rgba(255, 255, 255, 0.3)",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "20px",
+          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <img
+          src={iconGame}
+          alt='Icono de PSP'
+          style={
+            {width: "30px",
+            height: "30px",
+            marginRigth: "10px",}
+          }
+        />
+      </div>
+      <div>
+        <strong style={{ fontSize: "1.1rem" }}>{achievement.title}</strong>
+        <p style={{ margin: "5px 0", fontSize: "0.9rem" }}>
+          {achievement.description}
+        </p>
+      </div>
+    </motion.div>
+  ))}
+
+  {/* Carrusel Achievements */}
+  {carruselAchievements.map((achievement) => (
+    <motion.div
+      key={achievement.id}
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 50 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        background: "linear-gradient(135deg, #85d8ce, #a7ffeb)", // Degradado azul claro
+        color: "#004d40",
+        padding: "15px 20px",
+        margin: "10px 0",
+        borderRadius: "15px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+      }}
+    >
+      <div
+        style={{
+          width: "40px",
+          height: "40px",
+          background: "rgba(255, 255, 255, 0.3)",
+          borderRadius: "50%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: "20px",
+          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <img
+          src={iconCarrusel}
+          alt='Icono de carrusel'
+          style={
+            {width: "30px",
+            height: "30px",
+            marginRigth: "10px",}
+          }
+        />
+      </div>
+      <div>
+        <strong style={{ fontSize: "1.1rem" }}>{achievement.title}</strong>
+        <p style={{ margin: "5px 0", fontSize: "0.9rem" }}>
+          {achievement.description}
+        </p>
+      </div>
+    </motion.div>
+  ))}
+</div>
+
       </div>
     </div>
   );
