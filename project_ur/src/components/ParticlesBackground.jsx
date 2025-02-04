@@ -33,7 +33,7 @@ const ParticlesBackground = () => {
               { value: "🔮", font: "Arial", style: "", weight: "400" },
             ],
           },
-          opacity: { value: 0.9, random:true }, // Opacidad de las partículas
+          opacity: { minimunValuevalue: 0.6,maximumValue:1, random:true }, // Opacidad de las partículas
           size: { value: 20, random:{enable:true, minimunValue:5,maximumValue:30}, // Tamaño de las partículas
               animation:{
                 enable:true,

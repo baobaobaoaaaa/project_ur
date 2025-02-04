@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Autoplay, EffectCube, EffectCoverflow, EffectFlip, EffectFade } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaPlay, FaPause, FaDownload } from "react-icons/fa";
+import { FaPlay, FaPause, FaDownload, FaClosedCaptioning, FaTimes } from "react-icons/fa";
 import "project_ur/src/CarrouselStyles.css"
 
 import img1 from "../assets/480_361.jpg";
@@ -29,6 +29,7 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
   const [modalOpenCount, setModalOpenCount] = useState(0);//contador de veces que se abrio el modal
   const [hasLoggedManualChange, setHasLoggedManualChange] = useState(false);
   const [manualSlideChangeCount, setManualSlideChangeCount] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
 
   const images = [
@@ -169,10 +170,11 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
         borderRadius: "10px",
         background: "rgba(241, 224, 240, 0.6)",
         boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
+        
       }}
     >
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
+        modules={[Navigation, Pagination, Autoplay,EffectCoverflow,EffectCube,EffectFlip,EffectFade]}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -195,14 +197,22 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
           disableOnInteraction: false,
         }}
         loop={true}
+        effect="coverflow"
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} style={{width:"100%",height:"100%"}}>
             <div style={{ textAlign: "left" }}>
               <img
                 src={image.src}
                 alt={image.caption}
-                style={{ width: "100%", borderRadius: "3px", cursor: "pointer" }}
+                style={{ height:"100%",width: "100%", borderRadius: "10px", cursor: "pointer", objectFit: "cover" }}
                 onClick={() => openModal(image.src)}
               />
               {/* Boton de descarga dentro del carrusel */}
@@ -242,6 +252,7 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
           left: "50%",
           transform: "translateX(-50%)",
           width: "90%",
+          height: "90%",
           padding: "30px 55px",
           background: "rgba(255, 255, 255, 0.8)",
           borderRadius: "10px",
@@ -313,6 +324,10 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            maxHeight: "90%",
+            maxWidth:"1700px",
+            width: "100%",
+            padding: "30px",
           }}
           >
             <img
@@ -331,7 +346,7 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
               download={`imagen-${activeIndex + 1}.jpg`}
               style={{
                 position: "absolute",
-                top: "120px",
+                top: "50px",
                 right: "130px",
                 background: "#ff758c",
                 color: "white",
@@ -341,6 +356,24 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
                 boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
               }}
               ><FaDownload/> Descargar</a>
+              {/* Boton de cerrar en el modal */}
+              <a
+                style={{
+                  position: "absolute",
+                  top: "50px",
+                  left: "140px",
+                  background: "#ff758c",
+                  color: "white",
+                  padding: "5px 10px",
+                  borderRadius: "71px",
+                  textDecoration: "none",
+                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <FaTimes/>
+              </a>
           </div>
         </div>
       )}
