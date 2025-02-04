@@ -6,13 +6,17 @@ import song3 from "../audio/Boku Wa Chotto.mp3";
 import caratula1 from "../assets/music/caratula1.jpg";
 import caratula2 from "../assets/music/caratula2.jpg";
 import caratula3 from "../assets/music/caratula3.jpg";
+import { motion } from "framer-motion";
 
-export const Player = () => {
+export const Player = ({onAchievementUnlock}) => {
+  // console.log("onAchievementUnlock recibido en player.jsx:", onAchievementUnlock);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [hasPlayedFirstSong, setHasPlayedFirstSong] = useState(false);
+  const [hasChangedFirstSong, setHasChangedFirstSong] = useState(false);
 
   const songs = [
     {
@@ -36,6 +40,15 @@ export const Player = () => {
   ];
 
   const playPauseHandler = () => {
+    if (!isPlaying && !hasPlayedFirstSong && onAchievementUnlock) {
+      onAchievementUnlock(
+        "song",
+        "Primer Recuerdo",
+        "Has reproducido tu primera canción."
+      );
+      setHasPlayedFirstSong(true);
+    }
+  
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -43,6 +56,7 @@ export const Player = () => {
     }
     setIsPlaying(!isPlaying);
   };
+  
 
   const changeSongHandler = (index) => {
     audioRef.current.pause();
@@ -54,6 +68,15 @@ export const Player = () => {
         audioRef.current.play();
       }
     }, 100);
+    // logro cambiar de cancion
+    if (!hasChangedFirstSong && onAchievementUnlock) {
+      onAchievementUnlock("song","Melómano", "Has cambiado de canción por primera vez.");
+      setHasChangedFirstSong(true);
+    }
+    
+    // console.log("Cambiando canción...");
+    // console.log("onAchievementUnlock:", onAchievementUnlock);
+
   };
 
   const nextSongHandler = () => {
@@ -110,6 +133,12 @@ export const Player = () => {
       color: "#fff",
     }}
     >
+    <motion.div
+      initial={{ opacity: 0, y: 50 }} // Comienza invisible y desplazado hacia abajo
+      whileInView={{ opacity: 1, y: 0 }} // Se anima cuando entra en la vista
+      viewport={{ once: true }} // Solo se anima la primera vez que entra en la vista
+      transition={{ duration: 1, ease: "easeOut" }}
+    >
       <h2 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#fff" }}>
         Reproductor de Música
       </h2>
@@ -163,9 +192,12 @@ export const Player = () => {
           <FaStepForward/>
         </button>
       </div>
+      </motion.div>
     </div>
+    
   );
 };
+
 const buttonStyle = {
   padding: "15px",
   fontSize: "1.2rem",

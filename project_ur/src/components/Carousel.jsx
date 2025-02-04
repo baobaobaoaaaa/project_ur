@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaPlay, FaPause, FaDownload } from "react-icons/fa";
+import "project_ur/src/CarrouselStyles.css"
 
 import img1 from "../assets/480_361.jpg";
 import img2 from "../assets/480_364.jpg";
@@ -17,23 +18,18 @@ import img7 from "../assets/480_370.jpg";
 import img8 from "../assets/480_371.png";
 import img9 from "../assets/480_372.png";
 
-export const Carousel = () => {
+export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
+  // console.log("onAchievementUnlock recibido en Carousel.jsx:", onAchievementUnlock);
   const swiperRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
+  const [slideChangeCount, setSlideChangeCount] = useState(0);
+  const [hasPausedCarousel, setHasPausedCarousel] = useState(false);
+  const [modalOpenCount, setModalOpenCount] = useState(0);//contador de veces que se abrio el modal
+  const [hasLoggedManualChange, setHasLoggedManualChange] = useState(false);
+  const [manualSlideChangeCount, setManualSlideChangeCount] = useState(0);
 
-  const toggleAutoplay = () => {
-    if (swiperRef.current) {
-      if (isPaused) {
-        swiperRef.current.autoplay.start();
-      } else {
-        swiperRef.current.autoplay.stop();
-      }
-      setIsPaused(!isPaused);
-    }
-  };
 
   const images = [
     { src: img1, caption: "Recuerdo 1" },
@@ -47,10 +43,114 @@ export const Carousel = () => {
     { src: img9, caption: "Recuerdo 9" },
   ];
 
+
+  const toggleAutoplay = () => {
+    if (swiperRef.current) {
+      if (isPaused) {
+        swiperRef.current.autoplay.start();
+      } else {
+        swiperRef.current.autoplay.stop();
+        // logro pausar manualmente
+        if(!hasPausedCarousel && onAchievementUnlock){
+          onAchievementUnlock("carrusel","Momento de Reflexion","Has pausado las imagenes por primera vez.");
+          setHasPausedCarousel(true);
+        }
+      }
+      setIsPaused(!isPaused);
+    }
+  };
+  const handleSlideChange = (swiper) => {
+    if (!swiper.params.autoplay.enabled) {
+      // Cambio manual detectado
+      handleManualSlideChange();
+    } else {
+      console.log(`Cambio automático detectado: Slide actual -> ${swiper.realIndex}`);
+    }
+  };
+  const handleTransitionStart = () => {
+    console.log("Transición iniciada");
+  };
+  
+
+  const handleManualSlideChange = () => {
+    setManualSlideChangeCount((prevCount) => {
+      const newCount = prevCount + 1;
+
+      if (newCount === 1 && !hasLoggedManualChange) {
+        onAchievementUnlock(
+          "carrusel",
+          "Cambio Manual",
+          "Has cambiado la imagen manualmente por primera vez."
+        );
+        setHasLoggedManualChange(true);
+      }
+
+      if (newCount === 5) {
+        onAchievementUnlock(
+          "carrusel",
+          "Cinco Cambios Manuales",
+          "Has cambiado la imagen manualmente 5 veces."
+        );
+      }
+
+      if (newCount === 10) {
+        onAchievementUnlock(
+          "carrusel",
+          "Diez Cambios Manuales",
+          "Has cambiado la imagen manualmente 10 veces."
+        );
+      }
+
+      return newCount;
+    });
+  };
+
+  useEffect(() => {
+    const nextButton = document.querySelector(".custom-next");
+    const prevButton = document.querySelector(".custom-prev");
+
+    if (nextButton) {
+      nextButton.addEventListener("click", handleManualSlideChange);
+    }
+
+    if (prevButton) {
+      prevButton.addEventListener("click", handleManualSlideChange);
+    }
+
+    return () => {
+      if (nextButton) {
+        nextButton.removeEventListener("click", handleManualSlideChange);
+      }
+
+      if (prevButton) {
+        prevButton.removeEventListener("click", handleManualSlideChange);
+      }
+    };
+  }, []);
+
+ 
+
   const openModal = (src) => {
     setCurrentImage(src);
     setIsModalOpen(true);
-  };
+    setModalOpenCount((prev) =>{
+      const newCount = prev + 1;
+      // console.log("contador de veces que se abrio el modal",newCount);
+      if(newCount === 1 && onAchievementUnlock){
+        // console.log("primer recuerdo");
+        onAchievementUnlock("carrusel","Primer Recuerdo","Has abierto el primer recuerdo.");
+      }
+      if(newCount === 3 && onAchievementUnlock){
+        // console.log("tercer recuerdo");
+        onAchievementUnlock("carrusel","Tercer Recuerdo","Has abierto 3 recuerdos.");
+      }
+      if(newCount === 5 && onAchievementUnlock){
+        // console.log("quinto recuerdo");
+        onAchievementUnlock("carrusel","Viajera Inalcanzable","Has abierto 5 recuerdos.");
+      }
+      return newCount;
+    });
+    };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -76,7 +176,11 @@ export const Carousel = () => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+        onTransitionStart={handleTransitionStart}
+        onSlideChange={(swiper) => {
+          setActiveIndex(swiper.realIndex)
+          handleSlideChange(swiper);
+        }}
         spaceBetween={30}
         navigation={{
           nextEl: ".custom-next",

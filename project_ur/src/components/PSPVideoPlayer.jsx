@@ -13,20 +13,19 @@ const PSPVideoPlayer = ({onAchievementUnlock}) => {
       // Logros
 
     const [playCount, setPlayCount] = useState(0);
+    const [hasPaused, setHasPaused] = useState(false);
+
 
     const handleVideoPlay = () => {
       if (onAchievementUnlock) {
-        onAchievementUnlock("Primer Recuerdo","Has reproducido tu primer video.");
+        onAchievementUnlock("video","Primer Recuerdo","Has reproducido tu primer video.");
       }
     }
 
     const handleVideoEnd = () => {
       const newCount = playCount + 1;
       setPlayCount(newCount);
-      console.log(`Reproducciones: ${newCount}`);
-      if (newCount === 3 && onAchievementUnlock) {
-        onAchievementUnlock("Video Master","Has reproducido 3 videos.");
-      }
+      // console.log(`Reproducciones: ${newCount}`);
     }
       // Fin logros
 
@@ -61,10 +60,10 @@ const PSPVideoPlayer = ({onAchievementUnlock}) => {
     const incrementPlayCount = () => {
       const newCount = playCount + 1;
       setPlayCount(newCount);
-      console.log(`Reproducciones: ${newCount}`);
+      // console.log(`Reproducciones: ${newCount}`);
 
-      if (newCount === 3 && onAchievementUnlock) {
-        onAchievementUnlock("Video Master","Has reproducido 3 videos.");
+      if (newCount === 1 && onAchievementUnlock) {
+        onAchievementUnlock("video","Video Master","Has cambiado una vez el video.");
       }
     };
 
@@ -88,6 +87,12 @@ const PSPVideoPlayer = ({onAchievementUnlock}) => {
     const handlePause = () => {
         if (videoRef.current) {
         videoRef.current.pause();
+        if(!hasPaused){
+          setHasPaused(true);
+          if (onAchievementUnlock) {
+            onAchievementUnlock("video","Video Master","Has pausado un video.");
+          }
+        }
         }
     };
 
