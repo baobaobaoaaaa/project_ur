@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Navigation, Pagination, Autoplay, EffectCube, EffectCoverflow, EffectFlip, EffectFade } from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaPlay, FaPause, FaDownload, FaClosedCaptioning, FaTimes } from "react-icons/fa";
+import { FaPlay, FaPause, FaDownload, FaTimes } from "react-icons/fa";
 import "project_ur/src/CarrouselStyles.css"
 
 import img1 from "../assets/480_361.jpg";
@@ -29,7 +29,6 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
   const [modalOpenCount, setModalOpenCount] = useState(0);//contador de veces que se abrio el modal
   const [hasLoggedManualChange, setHasLoggedManualChange] = useState(false);
   const [manualSlideChangeCount, setManualSlideChangeCount] = useState(0);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
 
 
   const images = [

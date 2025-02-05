@@ -34,12 +34,14 @@ const navbarStyle = {
   top: 0,
   left: 0,
   width: "100%",
-  background: "rgba(255, 192, 203, 0.6)", // Fondo translúcido
+  background: "rgba(255, 255, 255, 0.2)", // Fondo translúcido
   padding: "10px 0",
   textAlign: "center",
   zIndex: 10,
   backdropFilter: "blur(10px)", // Efecto borroso detrás de la barra
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Sombra sutil debajo
+  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.2)", // Sombra sutil debajo
+  borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
+  
 };
 
 const buttonStyle = {
