@@ -64,7 +64,6 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
       // Cambio manual detectado
       handleManualSlideChange();
     } else {
-      console.log(`Cambio automático detectado: Slide actual -> ${swiper.realIndex}`);
     }
   };
   const handleTransitionStart = () => {

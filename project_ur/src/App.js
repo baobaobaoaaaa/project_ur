@@ -21,6 +21,8 @@ function App() {
   const [carruselAchievements, setCarruselAchievements] = useState([]);
   const [achievementQueue, setAchievementQueue] = useState([]);
   const [currentAchievement, setCurrentAchievement] = useState(null);
+  const [achievements, setAchievements] = useState([]);
+
 
   const achievementStyles = {
     song: {
@@ -53,19 +55,33 @@ function App() {
     }
   };
 
-  const onAchievementUnlock = (type, title, description) => {
-    if (!unlockedAchievements.current.has(`${type}-${title}`)) {
-      unlockedAchievements.current.add(`${type}-${title}`);
+  // Ejemplo de logro con ícono
+const onAchievementUnlock = (type, title, description) => {
+  const achievementId = `${type}-${title}`;
+  
+  if (!unlockedAchievements.current.has(achievementId)) {
+    unlockedAchievements.current.add(achievementId);
 
-      enqueueAchievement({
-        type,
-        title,
-        description,
-        id: `${type}-${title}-${Date.now()}`,
-      });
-    }
-  };
+    // Agrega ícono al logro según el tipo
+    const icon = type === "video" 
+      ? iconGame 
+      : type === "song"
+      ? iconMusic 
+      : iconCarrusel;
 
+    setAchievements((prev) => [
+      ...prev,
+      { type, title, description, icon }
+    ]);
+
+    enqueueAchievement({
+      type,
+      title,
+      description,
+      id: `${achievementId}-${Date.now()}`,
+    });
+  }
+};
   const enqueueAchievement = (achievement) => {
     setAchievementQueue((prev) => [...prev, achievement]);
   };
@@ -99,7 +115,7 @@ function App() {
       <div>
         {!isModalOpen && (
           <div className="navbar">
-            <Navbar />
+            <Navbar unlockedAchievements={achievements} />
           </div>
         )}
       </div>
@@ -163,15 +179,7 @@ function App() {
               color: "#6a0572",
             }}
           />
-          <MessageSection
-            title="Pequeña Nota"
-            message="Eres una persona increíble. Nunca olvides lo especial que eres para mí."
-            style={{
-              background: "rgba(255, 255, 255, 0.9)", // Blanco translúcido
-              color: "#333",
-              border: "1px solid #ccc",
-            }}
-          />
+          
         </section>
 
         {/* Reproductor */}
@@ -182,9 +190,18 @@ function App() {
           </section>
         </div>
 
+        <MessageSection
+            title="Pequeña Nota"
+            message="Eres una persona increíble. Nunca olvides lo especial que eres para mí."
+            style={{
+              background: "rgba(255, 255, 255, 0.9)", // Blanco translúcido
+              color: "#333",
+              border: "1px solid #ccc",
+            }}
+          />
+
         {/* PSP */}
-        <section style={{ textAlign: "center", padding: "20px 0" }}>
-          <h1 style={{ color: "white", marginBottom: "20px" }}>PSP</h1>
+        <section style={{ textAlign: "center"}}>
           <PSPVideoPlayer onAchievementUnlock={onAchievementUnlock} />
         </section>
 
@@ -208,7 +225,7 @@ function App() {
               transition={{ duration: 0.5, ease: "easeInOut" }}
               style={{
                 ...achievementStyles[currentAchievement.type],
-                padding: "15px 20px",
+                padding: "20px 20px",
                 margin: "10px 0",
                 borderRadius: "15px",
                 boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.3)",
@@ -229,6 +246,7 @@ function App() {
                   alignItems: "center",
                   fontSize: "20px",
                   boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
+                  flexShrink: 0,
                 }}
               >
                 <img
@@ -243,7 +261,7 @@ function App() {
                   style={{
                     width: "50px",
                     height: "50px",
-                    marginRight: "10px",
+                    marginRight: "0px",
                   }}
                 />
               </div>
