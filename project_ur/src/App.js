@@ -57,33 +57,50 @@ function App() {
     }
   };
 
-  // Ejemplo de logro con ícono
-const onAchievementUnlock = (type, title, description) => {
-  const achievementId = `${type}-${title}`;
+  const unlockedAchievementsQueue = []; // Cola global de logros
+  let isAchievementVisible = false;
   
-  if (!unlockedAchievements.current.has(achievementId)) {
-    unlockedAchievements.current.add(achievementId);
-
-    // Agrega ícono al logro según el tipo
-    const icon = type === "video" 
-      ? iconGame 
-      : type === "song"
-      ? iconMusic 
-      : iconCarrusel;
-
-    setAchievements((prev) => [
-      ...prev,
-      { type, title, description, icon }
-    ]);
-
-    enqueueAchievement({
-      type,
-      title,
-      description,
-      id: `${achievementId}-${Date.now()}`,
-    });
-  }
-};
+  const onAchievementUnlock = (type, title, description) => {
+    const achievementId = `${type}-${title}`;
+  
+    if (!unlockedAchievements.current.has(achievementId)) {
+      unlockedAchievements.current.add(achievementId);
+  
+      // Crear un nuevo logro y agregarlo a la cola
+      const newAchievement = {
+        type,
+        title,
+        description,
+        id: `${type}-${title}-${Date.now()}`,
+      };
+      unlockedAchievementsQueue.push(newAchievement);
+  
+      // Si no hay logro visible, mostrar el siguiente de la cola
+      if (!isAchievementVisible) {
+        showNextAchievement();
+      }
+    }
+  };
+  
+  const showNextAchievement = () => {
+    if (unlockedAchievementsQueue.length === 0) {
+      isAchievementVisible = false;
+      return;
+    }
+  
+    isAchievementVisible = true;
+    const nextAchievement = unlockedAchievementsQueue.shift();
+  
+    // Actualizar el estado del logro actual
+    setCurrentAchievement(nextAchievement);
+  
+    // Ocultar el logro después de 5 segundos y mostrar el siguiente de la cola
+    setTimeout(() => {
+      setCurrentAchievement(null);
+      showNextAchievement();
+    }, 5000); // Ajusta el tiempo según tus necesidades
+  };
+  
   const enqueueAchievement = (achievement) => {
     setAchievementQueue((prev) => [...prev, achievement]);
   };
@@ -126,7 +143,7 @@ const onAchievementUnlock = (type, title, description) => {
 
 
       {/* Presentacion */}
-      <ToroWithBubble/>
+      <ToroWithBubble currentText="Bienvenido a la pagina xddd" currentAchievement={currentAchievement}/>
       {/* Fin presentacion */}
       <div style={{ zIndex: -1 }}>
         {/* Fondo animado */}
@@ -159,7 +176,7 @@ const onAchievementUnlock = (type, title, description) => {
         </header>
 
         {/* Carrusel */}
-        <div>
+        <div id="carrusel">
           <section style={{ marginBottom: "50px" }}>
             <Carousel
               setIsModalOpen={setIsModalOpen}
@@ -208,7 +225,7 @@ const onAchievementUnlock = (type, title, description) => {
           />
 
         {/* PSP */}
-        <section style={{ textAlign: "center"}}>
+        <section style={{ textAlign: "center"}} id="videos">
           <PSPVideoPlayer onAchievementUnlock={onAchievementUnlock} />
         </section>
 
