@@ -34,7 +34,7 @@ const ParticlesBackground = () => {
             ],
           },
           opacity: { minimunValuevalue: 0.6,maximumValue:1, random:true }, // Opacidad de las partículas
-          size: { value: 20, random:{enable:true, minimunValue:5,maximumValue:30}, // Tamaño de las partículas
+          size: { value: 20, random:{enable:true, minimunValue:5,maximumValue:50}, // Tamaño de las partículas
               animation:{
                 enable:true,
                 speed:3,

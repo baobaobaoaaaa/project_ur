@@ -27,15 +27,12 @@ const ToroWithBubble = ({ currentAchievement }) => {
   useEffect(() => {
     let timeoutId = null;
 
-    console.log("Componente montado");
-
     // Crear IntersectionObserver
     observer.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionName = entry.target.id;
-            console.log(`Sección visible: "${sectionName}"`);
 
             // Mostrar mensaje de sección
             switch (sectionName) {
@@ -71,7 +68,6 @@ const ToroWithBubble = ({ currentAchievement }) => {
       const section = document.getElementById(id);
       if (section) {
         observer.current.observe(section);
-        console.log(`Sección observada: ${id}`);
       }
     });
 
