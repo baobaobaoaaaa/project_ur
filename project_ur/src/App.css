@@ -8,6 +8,7 @@ body {
   color: white;
   background-size: cover; /* Tamaño del degradado */
   animation: gradientBG 10s ease infinite; /* Animación del degradado */
+  background-color: transparent;
 }
 
 @keyframes gradientBG {
