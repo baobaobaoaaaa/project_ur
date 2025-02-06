@@ -137,7 +137,7 @@ export const Player = ({onAchievementUnlock}) => {
       initial={{ opacity: 0, y: 50 }} // Comienza invisible y desplazado hacia abajo
       whileInView={{ opacity: 1, y: 0 }} // Se anima cuando entra en la vista
       viewport={{ once: true }} // Solo se anima la primera vez que entra en la vista
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.1, ease: "easeOut" }}
     >
       <h2 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#fff" }}>
         Reproductor de Música

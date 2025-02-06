@@ -11,6 +11,8 @@ import ShootingStars from "./components/ShootingStars";
 import iconCarrusel from "project_ur/src/components/icons/cinema.png";
 import iconMusic from "project_ur/src/components/icons/music-player.png";
 import iconGame from "project_ur/src/components/icons/game-controller.png";
+import Presenter from "./components/ToroWithBubble";
+import ToroWithBubble from "./components/ToroWithBubble";
 
 function App() {
   // Logros
@@ -121,6 +123,11 @@ const onAchievementUnlock = (type, title, description) => {
       </div>
 
       {/* Fin Navbar */}
+
+
+      {/* Presentacion */}
+      <ToroWithBubble/>
+      {/* Fin presentacion */}
       <div style={{ zIndex: -1 }}>
         {/* Fondo animado */}
         <ParticlesBackground />
