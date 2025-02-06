@@ -71,8 +71,8 @@ const IntroductionScreen = ({ onFinish }) => {
               left: 0,
               width: "50%",
               height: "100%",
-              background: "linear-gradient(135deg, #FF85A2, #FF99B5)", // Rosado fuerte
-              zIndex: 3000,
+              background: "linear-gradient(135deg, #FF85A2, #FF99B5)",
+              zIndex: 2000,
             }}
           />
           {/* Cortina derecha */}
@@ -86,8 +86,8 @@ const IntroductionScreen = ({ onFinish }) => {
               right: 0,
               width: "50%",
               height: "100%",
-              background: "linear-gradient(135deg, #FF99B5, #FF85A2)", // Rosado inverso
-              zIndex: 3000,
+              background: "linear-gradient(135deg, #FF99B5, #FF85A2)",
+              zIndex: 2000,
             }}
           />
         </>
@@ -105,8 +105,8 @@ const IntroductionScreen = ({ onFinish }) => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "#FFADC4", // Rosado vibrante pero suave
-            zIndex: 4000,
+            backgroundColor: "#FFADC4",
+            zIndex: 3000,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -124,7 +124,7 @@ const IntroductionScreen = ({ onFinish }) => {
         </motion.div>
       )}
 
-      {!showCurtains && (
+      {!fadeOut && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: fadeOut ? 0 : 1 }}
@@ -135,11 +135,11 @@ const IntroductionScreen = ({ onFinish }) => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "#FFADC4",
+            backgroundColor: "#FF85A2", // Fondo transparente
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            zIndex: 2000,
+            zIndex: 1500,
             flexDirection: "column",
           }}
         >
@@ -170,6 +170,7 @@ const IntroductionScreen = ({ onFinish }) => {
                 borderLeft: "10px solid transparent",
                 borderRight: "10px solid transparent",
                 borderTop: "10px solid white",
+                
               }}
             ></div>
           </div>
@@ -179,7 +180,6 @@ const IntroductionScreen = ({ onFinish }) => {
             src={toroImage}
             alt="Toro Inoue"
             style={{ width: "150px", marginBottom: "20px" }}
-            zIndex={3000}
           />
 
           {/* Botón para avanzar */}
