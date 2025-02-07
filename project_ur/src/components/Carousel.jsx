@@ -7,6 +7,7 @@ import { Navigation, Pagination, Autoplay, EffectCube, EffectCoverflow, EffectFl
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaPlay, FaPause, FaDownload, FaTimes } from "react-icons/fa";
 import "project_ur/src/CarrouselStyles.css"
+import ScrollProgressWheel from "./ScrollProgressWheel";
 
 import img1 from "../assets/480_361.jpg";
 import img2 from "../assets/480_364.jpg";
@@ -29,6 +30,12 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
   const [modalOpenCount, setModalOpenCount] = useState(0);//contador de veces que se abrio el modal
   const [hasLoggedManualChange, setHasLoggedManualChange] = useState(false);
   const [manualSlideChangeCount, setManualSlideChangeCount] = useState(0);
+
+
+  const calculateProgress = () => {
+    return (activeIndex / (images.length - 1));
+  };
+
 
 
   const images = [

@@ -13,6 +13,7 @@ import iconMusic from "project_ur/src/components/icons/music-player.png";
 import iconGame from "project_ur/src/components/icons/game-controller.png";
 import IntroductionScreen from "./components/IntroduccionScreen";
 import ToroWithBubble from "./components/ToroWithBubble";
+import CursorFollower from "./components/CursorFollower";
 
 function App() {
   // Logros
@@ -72,22 +73,36 @@ function App() {
   
     if (!unlockedAchievements.current.has(achievementId)) {
       unlockedAchievements.current.add(achievementId);
+      // Seleccionar el icono según el tipo de logro
+      const icons = {
+        song: "🎵", // Emoji para canciones
+        video: "🎮", // Emoji para videos
+        carrusel: "📷"
+      };
+
   
-      // Crear un nuevo logro y agregarlo a la cola
+      // Crear un nuevo logro
       const newAchievement = {
         type,
         title,
         description,
         id: `${type}-${title}-${Date.now()}`,
+        icon: icons[type],
       };
+  
       unlockedAchievementsQueue.push(newAchievement);
   
-      // Si no hay logro visible, mostrar el siguiente de la cola
+      // Actualizar logros con un pequeño retraso
+      setTimeout(() => {
+        setAchievements((prev) => [...prev, newAchievement]);
+      }, 0);
+  
       if (!isAchievementVisible) {
         showNextAchievement();
       }
     }
   };
+  
   
   const showNextAchievement = () => {
     if (unlockedAchievementsQueue.length === 0) {
@@ -113,6 +128,7 @@ function App() {
   };
 
   useEffect(() => {
+    
     if (!currentAchievement && achievementQueue.length > 0) {
       // Sacar el primer logro de la cola
       const nextAchievement = achievementQueue[0];
@@ -157,6 +173,11 @@ function App() {
           {/* Presentacion */}
           <ToroWithBubble currentText="Bienvenido a la pagina xddd" currentAchievement={currentAchievement}/>
           {/* Fin presentacion */}
+
+          {/* CursorFollowe */}
+          <CursorFollower />
+          {/* Fin CursorFollower */}
+
           <div style={{ zIndex: -1 }}>
             {/* Fondo animado */}
             <ParticlesBackground />

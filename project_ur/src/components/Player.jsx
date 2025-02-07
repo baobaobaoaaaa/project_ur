@@ -8,7 +8,7 @@ import caratula2 from "../assets/music/caratula2.jpg";
 import caratula3 from "../assets/music/caratula3.jpg";
 import { motion } from "framer-motion";
 
-export const Player = ({onAchievementUnlock}) => {
+export const Player = ({ onAchievementUnlock }) => {
   // console.log("onAchievementUnlock recibido en player.jsx:", onAchievementUnlock);
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -48,7 +48,7 @@ export const Player = ({onAchievementUnlock}) => {
       );
       setHasPlayedFirstSong(true);
     }
-  
+
     if (isPlaying) {
       audioRef.current.pause();
     } else {
@@ -56,7 +56,6 @@ export const Player = ({onAchievementUnlock}) => {
     }
     setIsPlaying(!isPlaying);
   };
-  
 
   const changeSongHandler = (index) => {
     audioRef.current.pause();
@@ -70,13 +69,16 @@ export const Player = ({onAchievementUnlock}) => {
     }, 100);
     // logro cambiar de cancion
     if (!hasChangedFirstSong && onAchievementUnlock) {
-      onAchievementUnlock("song","Melómano", "Has cambiado de canción por primera vez.");
+      onAchievementUnlock(
+        "song",
+        "Melómano",
+        "Has cambiado de canción por primera vez."
+      );
       setHasChangedFirstSong(true);
     }
-    
+
     // console.log("Cambiando canción...");
     // console.log("onAchievementUnlock:", onAchievementUnlock);
-
   };
 
   const nextSongHandler = () => {
@@ -114,87 +116,167 @@ export const Player = ({onAchievementUnlock}) => {
   const formatTime = (time) => {
     if (isNaN(time)) return "00:00";
     const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60).toString().padStart(2, "0");
+    const seconds = Math.floor(time % 60)
+      .toString()
+      .padStart(2, "0");
     return `${minutes}:${seconds}`;
   };
 
   return (
-    <div  //fondo del reproductor
-    style={{
-      background: "rgba(255, 255, 255, 0.2)", // Fondo translúcido
-      backdropFilter: "blur(10px)", // Efecto de desenfoque
-      border: "1px solid rgba(255, 255, 255, 0.3)", // Borde sutil
-      padding: "20px",
-      borderRadius: "20px",
-      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.5)", // Sombra para profundidad
-      textAlign: "center",
-      maxWidth: "400px",
-      margin: "20px auto",
-      color: "#fff",
-    }}
+    <div //fondo del reproductor
+      style={{
+        background: "rgba(255, 255, 255, 0.2)", // Fondo translúcido
+        backdropFilter: "blur(10px)", // Efecto de desenfoque
+        border: "1px solid rgba(255, 255, 255, 0.3)", // Borde sutil
+        padding: "10px",
+        borderRadius: "10px",
+        boxShadow: "0 8px 20px rgba(0, 0, 0, 0.5)", // Sombra para profundidad
+        textAlign: "center",
+        maxWidth: "400px",
+        margin: "20px auto",
+        color: "#fff",
+      }}
     >
-    <motion.div
-      initial={{ opacity: 0, y: 50 }} // Comienza invisible y desplazado hacia abajo
-      whileInView={{ opacity: 1, y: 0 }} // Se anima cuando entra en la vista
-      viewport={{ once: true }} // Solo se anima la primera vez que entra en la vista
-      transition={{ duration: 0.1, ease: "easeOut" }}
-    >
-      <h2 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#fff" }}>
-        Reproductor de Música
-      </h2>
-      <img
-        src={songs[currentIndex].cover}
-        alt="Carátula"
-        style={{
-          width: "100%",
-          borderRadius: "15px",
-          marginBottom: "15px",
-          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.5)", // Sombra en la imagen
+      <motion.div
+        style={
+          {
+            borderRadius: "10px",
+            padding: "20px",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "24px",
+            fontWeight: "bold",
+            color: "white",
+            textAlign: "center",
+            background: "linear-gradient(90deg, #ff758c, #758cff)",
+            backgroundSize: "200% 200%",
+          }
+        }
+        animate={{
+          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+          color: ["#fff", "#fbc4c4"],
         }}
-      />
-      <h3 style={{ fontSize: "1.2rem", marginBottom: "5px" }}>{songs[currentIndex].title}</h3>
-      <p style={{ fontSize: "1rem", marginBottom: "15px", color: "#ffffff" }}>{songs[currentIndex].artist}</p>
-      <audio ref={audioRef} src={songs[currentIndex].src}></audio>
-        {/* barrra de tiempo */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "15px" }}>
-        <span style={{ fontSize: "0.9rem", color: "#ffffff" }}>{formatTime(currentTime)}</span>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={(currentTime / duration) * 100 || 0}
-          onChange={handleSeek}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <h2 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#fff" }}>
+          Reproductor de Música
+        </h2>
+        <motion.img
+          src={songs[currentIndex].cover}
+          alt="Carátula"
           style={{
-            flex: 1,
-            margin: "0 10px",
-            cursor: "pointer",
-            background: "linear-gradient(90deg, #ff7eb3, #ff758c)", // Degradado aesthetic
-            borderRadius: "5px",
-            height: "5px",
-            outline: "none",
-            appearance: "none",
-            accentColor: "#ff758c",
+            width: "95%",
+            borderRadius: "15px",
+            marginBottom: "15px",
+            
           }}
+          animate={{
+            boxShadow: [
+              "0 10px 20px rgba(255, 117, 140, 0.4)",
+              "0 10px 20px rgba(117, 140, 255, 0.4)",
+            ], // Cambia la sombra
+          }}
+          whileHover={{ scale: 1.05 }} // Efecto de zoom al pasar el cursor
+          transition={{ duration: 0.1 }}
+          drag // Permite arrastrar la imagen
+          dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }} // Limita el movimiento
         />
-        <span style={{ fontSize: "0.9rem", color: "#ffffff" }}>{formatTime(duration)}</span>
-      </div>
-      {/* fin barra de tiempo */}
+        <motion.h3
+          animate={{
+            color: ["#ff758c", "#fbc4c4", "#ff758c"], // Ciclo de colores
+            backgroundPosition: ["110% 110%", "100% 110%", "10% 110%"], // Animación de
+            
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity, // Loop infinito
+            ease: "easeInOut",
+          }}
+          style={{ fontSize: "1.2rem",
+                   marginBottom: "5px" ,
+                    backgroundSize: "200% 200%",
+                  }}
+        >
+          {songs[currentIndex].title}
+        </motion.h3>
+        <p style={{ fontSize: "1rem", marginBottom: "15px", color: "#ffffff" }}>
+          {songs[currentIndex].artist}
+        </p>
+        <audio ref={audioRef} src={songs[currentIndex].src}></audio>
+        {/* barrra de tiempo */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "15px",
+          }}
+        >
+          <span style={{ fontSize: "0.9rem", color: "#ffffff" }}>
+            {formatTime(currentTime)}
+          </span>
+          <motion.input
+            type="range"
+            min="0"
+            max="100"
+            value={(currentTime / duration) * 100 || 0}
+            onChange={handleSeek}
+            style={{
+              flex: 1,
+              margin: "0 10px",
+              cursor: "pointer",
+              background: "linear-gradient(90deg, #ff7eb3, #ff758c)", // Degradado aesthetic
+              borderRadius: "5px",
+              height: "5px",
+              outline: "none",
+              appearance: "none",
+              accentColor: "#ff758c",
+            }}
+          />
+          <span style={{ fontSize: "0.9rem", color: "#ffffff" }}>
+            {formatTime(duration)}
+          </span>
+        </div>
+        {/* fin barra de tiempo */}
 
-
-      <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
-        <button onClick={prevSongHandler} style={buttonStyle}>
-          <FaStepBackward/>
-        </button>
-        <button onClick={playPauseHandler} style={buttonStyle}>
-          {isPlaying ? <FaPause/> : <FaPlay/>}
-        </button>
-        <button onClick={nextSongHandler} style={buttonStyle}>
-          <FaStepForward/>
-        </button>
-      </div>
+        <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+          <motion.button
+            onClick={prevSongHandler}
+            style={buttonStyle}
+            whileTap={{ scale: 0.9, rotate: -155 }}
+            transition={{ duration: 0.1 }}
+            whileHover={{ scale: 1.2 }}
+            damping={17}
+          >
+            <FaStepBackward />
+          </motion.button>
+          <motion.button
+            onClick={playPauseHandler}
+            style={buttonStyle}
+            whileTap={{ scale: 2, rotate: 100 }}
+            transition={{ duration: 0.1 }}
+            whileHover={{ scale: 1.2 }}
+            damping={17}
+          >
+            {isPlaying ? <FaPause /> : <FaPlay />}
+          </motion.button>
+          <motion.button
+            onClick={nextSongHandler}
+            style={buttonStyle}
+            whileTap={{ scale: 2, rotate: 155 }}
+            transition={{ duration: 0.1 }}
+            whileHover={{ scale: 1.2 }}
+            damping={17}
+          >
+            <FaStepForward />
+          </motion.button>
+        </div>
       </motion.div>
     </div>
-    
   );
 };
 
@@ -215,6 +297,5 @@ buttonStyle[":hover"] = {
   transform: "scale(1.1)",
   background: "rgba(255, 255, 255, 0.2)", // Cambia a un fondo más claro
 };
-
 
 export default Player;
