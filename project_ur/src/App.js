@@ -14,6 +14,7 @@ import iconGame from "project_ur/src/components/icons/game-controller.png";
 import IntroductionScreen from "./components/IntroduccionScreen";
 import ToroWithBubble from "./components/ToroWithBubble";
 import CursorFollower from "./components/CursorFollower";
+import PostIt from "./components/Post-it";
 
 function App() {
   // Logros
@@ -218,9 +219,13 @@ function App() {
                 />
               </section>
             </div>
+            {/* postit */}
+            <section>
+              <PostIt message="Este es un mensaje especial para ti. ¡Espero que te guste!" />
+            </section>
+
             {/* Seccion de mensajes de prueba */}
             <section>
-              
               <MessageSection
                 title="Mensaje 1"
                 message="Este es un mensaje especial que quiero compartir contigo."

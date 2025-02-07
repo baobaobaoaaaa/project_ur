@@ -166,6 +166,8 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
   return (
     <div
       style={{
+        width: "90%",
+        height: "90%",
         maxHeight: "80%",
         overflow: "hidden",
         position: "relative",
