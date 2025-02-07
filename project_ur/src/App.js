@@ -16,6 +16,7 @@ import ToroWithBubble from "./components/ToroWithBubble";
 import CursorFollower from "./components/CursorFollower";
 import PostIt from "./components/Post-it";
 
+
 function App() {
   // Logros
   const unlockedAchievements = useRef(new Set()); // Evita duplicados
@@ -178,7 +179,6 @@ function App() {
           {/* CursorFollowe */}
           <CursorFollower />
           {/* Fin CursorFollower */}
-
           <div style={{ zIndex: -1 }}>
             {/* Fondo animado */}
             <ParticlesBackground />
