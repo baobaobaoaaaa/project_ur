@@ -89,7 +89,7 @@ const Navbar = ({ unlockedAchievements }) => {
             <motion.button
               onClick={() => setIsAchievementsMenuOpen(false)}
               style={closeButtonStyle}
-              whileHover={{ scale: 1.05 ,backgroundColor:"#9ae1d4"}}
+              whileHover={{ scale: 1.05 ,backgroundColor:"#D70654"}}
               transition={{duration:0.2}}
             >
               Cerrar
@@ -156,17 +156,18 @@ const achievementsMenuStyle = {
   position: "fixed",
   top: 0,
   right: 0,
-  width: "345px",
+  width: "350px",
   height: "100vh",
-  background: "linear-gradient(135deg, #0e4675, #122b5e)", // Gradiente azul oscuro
-  color: "#f9d4db", // Rosa pastel para texto principal
+  background: "#F72C5B", // Rosa claro a rosa intenso
+  color: "#ffffff", // Texto blanco
   padding: "20px",
-  boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.3)",
+  boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.2)",
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-start",
-  gap: "20px", // Separación entre elementos
+  gap: "20px",
 };
+
 
 
 const achievementsContainerStyle = {
@@ -181,61 +182,72 @@ const achievementsContainerStyle = {
 
 const achievementItemStyle = {
   display: "flex",
+  flexDirection: "column",
   alignItems: "center",
-  gap: "5px",
-  background: "rgba(255, 255, 255, 0.15)", // Fondo blanco translúcido
-  border: "1px solid rgba(255, 255, 255, 0.3)", // Borde blanco translúcido
-  borderRadius: "15px",
-  padding: "20px",
-  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)", // Sombra para dar profundidad
-  transition: "transform 0.3s, box-shadow 0.3s", // Animación
+  gap: "5px", // Espaciado entre elementos
+  background: "#FF748B", // Gradiente rosa pastel a púrpura claro
+  borderRadius: "20px",
+  padding: "5px",
+  boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)", // Sombra suave
+  textAlign: "center", // Centra todo el contenido
+  transition: "transform 0.3s ease, box-shadow 0.3s ease", // Animaciones suaves
   cursor: "pointer",
 };
 
+achievementItemStyle[':hover'] = {
+  transform: "scale(1.05)", // Aumenta el tamaño en hover
+  boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)", // Más profundidad
+};
+
+
 
 const iconStyle = {
-  width: "60px",
-  height: "60px",
-  background: "rgba(255, 255, 255, 0.2)", // Fondo translúcido
+  width: "80px", // Tamaño del icono
+  height: "80px",
+  background: "linear-gradient(135deg,rgb(20, 20, 44),rgb(99, 59, 207))", // Gradiente púrpura oscuro
   borderRadius: "50%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  fontSize: "24px", // Tamaño del icono
-  boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)", // Sombra
+  fontSize: "36px", // Tamaño del icono
+  color: "#ffffff", // Blanco para contraste
+  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Sombra suave
 };
+
 
 
 const achievementTitleStyle = {
-  fontSize: "1.1rem",
+  fontSize: "1.2rem", // Tamaño grande para el título
   fontWeight: "bold",
-  color: "#ff9690", // Coral claro
-  marginBottom: "5px",
+  color: "#ffffff", // Blanco para contraste
+  textShadow: "1px 1px 2px rgba(0, 0, 0, 0.5)", // Sombra ligera para destacar
 };
 
 const achievementDescriptionStyle = {
-  fontSize: "0.9rem",
-  color: "#ffffff", // Texto blanco para buen contraste
-  margin: 0,
+  fontSize: "0.9rem", // Más pequeño para la descripción
+  color: "#white", // Azul medio para buen contraste
 };
 
 const closeButtonStyle = {
-  padding: "10px 20px",
+  padding: "10px 25px",
   fontSize: "16px",
-  borderRadius: "25px",
-  border: "2px solid #9ae1d4", // Verde menta
-  background: "rgba(14, 70, 117, 0.8)", // Azul oscuro translúcido
-  color: "#fff",
+  borderRadius: "30px",
+  border: "2px solid #8b3d78", // Púrpura oscuro
+  background: "#FFFDEC", // Gradiente rosa
+  color: "#FBB4A5", // Texto blanco
   cursor: "pointer",
   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-  transition: "background-color 0.3s, transform 0.3s",
+  transition: "all 0.3s ease",
 };
+
+
+
 
 
 
 const achievementsTitleStyle = {
   fontSize: "1.8rem",
-  color: "#9ae1d4", // Verde menta
+  color: "#FFEFC8", // Verde menta
   textAlign: "center",
   marginBottom: "20px",
 };
