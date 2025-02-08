@@ -28,8 +28,8 @@ const Navbar = ({ unlockedAchievements }) => {
           onClick={() => document.getElementById("player").scrollIntoView()}
         />
         <NavButton
-          text="📞 Contacto"
-          onClick={() => document.getElementById("footer").scrollIntoView()}
+          text="📞 Videos"
+          onClick={() => document.getElementById("videos").scrollIntoView()}
         />
 
         {/* Botón de Logros */}

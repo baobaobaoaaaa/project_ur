@@ -42,17 +42,24 @@ const IntroductionScreen = ({ onFinish }) => {
     if (currentMessageIndex < messages.length - 1) {
       setCurrentMessageIndex((prev) => prev + 1);
     } else {
-      setShowCurtains(true);
-      setTimeout(() => {
-        setFadeIn(true);
-        setTimeout(() => {
-          setFadeOut(true);
-          setTimeout(() => {
-            onFinish();
-          }, 1000);
-        }, 3000);
-      }, 1500);
+      skipIntro(); // Usa la lógica de "Saltar Introducción" al final
     }
+  };
+
+  // Función para saltar la introducción y asegurarse de que las cortinas se animan
+  const skipIntro = () => {
+    setShowCurtains(true); // Activa las cortinas
+
+    // Deja que las cortinas se animen antes de finalizar la introducción
+    setTimeout(() => {
+      setFadeIn(true); // Desaparece la introducción con fade-in
+      setTimeout(() => {
+        setFadeOut(true); // Hace fade-out y llama a onFinish
+        setTimeout(() => {
+          onFinish(); // Finaliza la introducción
+        }, 2400); // Tiempo suficiente para el fade-out
+      }, 1500); // Tiempo suficiente para el fade-in
+    }, 1500); // Tiempo suficiente para la animación de las cortinas
   };
 
   return (
@@ -98,7 +105,7 @@ const IntroductionScreen = ({ onFinish }) => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: fadeOut ? 0 : 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 2 }}
           style={{
             position: "fixed",
             top: 0,
@@ -112,15 +119,20 @@ const IntroductionScreen = ({ onFinish }) => {
             alignItems: "center",
           }}
         >
-          <h1
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             style={{
               color: "white",
               fontSize: "2.5rem",
               textShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
+              textAlign: "center",
+              fontWeight: "bold",
             }}
           >
             ¡Bienvenida a Proyecto UR!
-          </h1>
+          </motion.h1>
         </motion.div>
       )}
 
@@ -135,7 +147,7 @@ const IntroductionScreen = ({ onFinish }) => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "#FF85A2", // Fondo transparente
+            backgroundColor: "#FF85A2",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -143,6 +155,29 @@ const IntroductionScreen = ({ onFinish }) => {
             flexDirection: "column",
           }}
         >
+          {/* Botón "Saltar Introducción" en la parte superior derecha */}
+          <motion.button
+            onClick={skipIntro}
+            whileHover={{ scale: 1.1, rotate: 3 }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              position: "absolute",
+              top: "20px",
+              right: "20px",
+              backgroundColor: "rgba(255, 105, 180, 0.8)",
+              color: "white",
+              padding: "10px 15px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              fontSize: "14px",
+              boxShadow: "0px 4px 8px rgba(0,0,0,0.2)",
+              fontWeight: "bold",
+            }}
+          >
+            Saltar Introducción
+          </motion.button>
+
           {/* Globo de texto */}
           <div
             style={{
@@ -170,33 +205,40 @@ const IntroductionScreen = ({ onFinish }) => {
                 borderLeft: "10px solid transparent",
                 borderRight: "10px solid transparent",
                 borderTop: "10px solid white",
-                
               }}
             ></div>
           </div>
 
           {/* Imagen del toro */}
-          <img
+          <motion.img
             src={toroImage}
             alt="Toro Inoue"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             style={{ width: "150px", marginBottom: "20px" }}
+            whileHover={{ scale: 1.1 }}
           />
 
-          {/* Botón para avanzar */}
-          <button
+          {/* Botón "Siguiente" */}
+          <motion.button
             onClick={handleNextMessage}
+            whileHover={{ scale: 1.1, rotate: -3 }}
+            whileTap={{ scale: 0.9 }}
             style={{
               padding: "10px 20px",
-              backgroundColor: "#FF69B4",
+              background: "linear-gradient(135deg, #FF69B4, #FF85A2)",
               color: "white",
               border: "none",
               borderRadius: "5px",
               cursor: "pointer",
               fontSize: "16px",
+              fontWeight: "bold",
+              boxShadow: "0px 4px 8px rgba(0,0,0,0.2)",
             }}
           >
             {currentMessageIndex < messages.length - 1 ? "Siguiente" : "Empezar"}
-          </button>
+          </motion.button>
         </motion.div>
       )}
     </>

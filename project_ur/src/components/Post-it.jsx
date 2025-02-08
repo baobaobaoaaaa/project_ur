@@ -135,7 +135,10 @@ const PostIts = () => {
         <div>
             {polaroids.map((polaroid, index) => (
                 <motion.div
+                    drag
+                    dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     key={index}
+                    whileHover={{ scale: 1.1 ,rotate: 4 || -4}}
                     style={{
                     position: "absolute",
                     ...polaroid,
