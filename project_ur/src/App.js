@@ -223,7 +223,7 @@ function App() {
             </div>
             {/* postit */}
             <section>
-              <PostIt message="Este es un mensaje especial para ti. ¡Espero que te guste!" />
+              <PostIt/>
             </section>
 
             {/* LLAVERO */}
@@ -235,7 +235,9 @@ function App() {
             <section>
               <MessageSection
                 title="Mensaje 1"
-                message="Este es un mensaje especial que quiero compartir contigo."
+                message="Lorem ipsum dolor sit amet consectetur adipiscing elit cras odio dignissim sollicitudin dui inceptos et diam neque aliquam, libero pharetra nostra sodales ultricies ut varius arcu est non mollis parturient fusce netus eleifend. Taciti congue consequat pharetra himenaeos euismod cras ante, eu nec sapien habitant eget velit vivamus, massa scelerisque leo erat tempor justo. Phasellus libero facilisis tempus enim quam elementum volutpat, malesuada nam nascetur viverra pretium vehicula nec dapibus, class vitae nostra euismod tellus metus.
+
+Curae suspendisse volutpat donec enim id varius mattis velit sem, scelerisque condimentum primis mollis feugiat nam gravida nibh, ultricies sagittis congue quisque odio semper iaculis natoque. Luctus ultricies donec tincidunt viverra eu parturient risus tortor ultrices turpis, in lacus blandit felis cras ac congue quam convallis. Vitae velit ullamcorper posuere interdum faucibus facilisi habitant ac diam mollis, mauris sociis suscipit ante dis potenti litora purus nec lectus, justo consequat pulvinar magnis tristique semper aenean primis placerat.."
                 style={{
                   background: "linear-gradient(135deg, #f6d365, #fda085)", // Degradado cálido
                   color: "white",
@@ -255,11 +257,13 @@ function App() {
             {/* Reproductor */}
             <div id="player">
               <section style={{ textAlign: "center", padding: "20px 0" }}>
-                <h1 style={{ color: "white", marginBottom: "20px" }}>Lorem psi</h1>
                 <Player onAchievementUnlock={onAchievementUnlock} />
               </section>
             </div>
-
+            {/* PSP */}
+            <section style={{ textAlign: "center"}} id="videos">
+              <PSPVideoPlayer onAchievementUnlock={onAchievementUnlock} />
+            </section>
             <MessageSection
                 title="Pequeña Nota"
                 message="Eres una persona increíble. Nunca olvides lo especial que eres para mí."
@@ -269,11 +273,6 @@ function App() {
                   border: "1px solid #ccc",
                 }}
               />
-
-            {/* PSP */}
-            <section style={{ textAlign: "center"}} id="videos">
-              <PSPVideoPlayer onAchievementUnlock={onAchievementUnlock} />
-            </section>
 
             {/* Logros */}
             {/* Achievements Section */}

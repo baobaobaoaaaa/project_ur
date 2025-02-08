@@ -11,20 +11,41 @@ import globosonido7 from "project_ur/src/audio/effects/zapsplat_cartoon_pop_sing
 
 import image1 from "project_ur/src/assets/images/toroxd.jpg"   
 import image2 from "project_ur/src/assets/images/toro2.jpg"
+import image3 from "project_ur/src/assets/images/toro3.jpg"
+import image4 from "project_ur/src/assets/images/toro4.jpg"
+import image6 from "project_ur/src/assets/images/toro6.png"
+import image7 from "project_ur/src/assets/images/toro7.jpg"
+import image8 from "project_ur/src/assets/images/toro8.jpg"
 
-
-const doodles = [
-  { emoji: "☁️", top: "50px", left: "150px" },
-  { emoji: "⭐", top: "200px", left: "300px" },
-  { emoji: "❤️", top: "400px", right: "50px" },
-  { emoji: "✨", bottom: "100px", left: "100px" },
-  { emoji: "➡️", top: "600px", left: "200px" },
+const messages = [
+  "ERES LA MEJOR BAOO <3",
+  "Eres una persona increíble 💖",
+  "Eres una ratita muy bonita 🎮",
+  "No olvides lo especial que eres para mi 🌈",
+  "No se te olvide tomar awa 💧",
 ];
 
 const polaroids = [
-    { src: image1, caption: "Un día especial", top: "300px", left: "50px" },
-    { src: image2, caption: "Recuerdo feliz", top: "500px", right: "100px" },
-  ];
+  { src: image1, caption: "Un día especial", top: "300px", left: "50px" },
+  { src: image2, caption: "Recuerdo feliz", top: "500px", right: "100px" },
+  { src: image3, caption: "Momento mágico", top: "1000px", left: "30px" },
+  { src: image4, caption: "Sonrisa eterna", top: "1100px", right: "50px" },
+  { src: image6, caption: "Recuerdo inolvidable", top: "1500px", left: "1px" },
+  { src: image7, caption: "Momento especial", top: "700px", left: "10px" },
+  { src: image8, caption: "Recuerdo feliz", top: "100px", right: "100px" },
+];
+
+
+const initialRotations = Array.from(
+  {length: messages.length},
+  () => Math.random() * 15 - 10 // Entre -10 y 10 grados
+)
+
+const initialPolaroidRotations = Array.from(
+  { length: polaroids.length },
+  () => Math.random() * 15 - 7.5 // Entre -5 y 5 grados
+);
+
 
 const sounds = [
   globosonido1,
@@ -43,14 +64,7 @@ const playRandomSound = () => {
 };
 
 const PostIts = () => {
-  const messages = [
-    "ERES LA MEJOR BAOO <3",
-    "Eres una persona increíble 💖",
-    "Eres una ratita muy bonita 🎮",
-    "No olvides lo especial que eres para mi 🌈",
-    "No se te olvide tomar awa 💧",
-  ];
-
+  
   const positions = [
     { top: "-959px", left: "0px" }, // Superior izquierdo
     { top: "-799px", left: "-280px" }, // Medio izquierdo
@@ -74,9 +88,9 @@ const PostIts = () => {
             drag
             dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
             key={index}
-            initial={{ rotate: rotations[index], opacity: 0 }}
-            animate={{ rotate: 0, opacity: 1 }}
-            whileHover={{ scale: 1.1, rotate: rotations[index] + 5 }}
+            initial={{ rotate: initialRotations[index]}}
+            animate={{ rotate: initialRotations[index]}}
+            whileHover={{ scale: 1.2, rotate: rotations[index] + 5 }}
             whileDrag={playRandomSound}
             onClick={playRandomSound}
             transition={{ duration: 0.5 }}
@@ -140,7 +154,9 @@ const PostIts = () => {
                     drag
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     key={index}
-                    whileHover={{ scale: 1.1 ,rotate: 4 || -4}}
+                    whileHover={{ scale: 1.5 ,rotate: 4 || -4}}
+                    initial={{ rotate: initialPolaroidRotations[index] }}
+                    animate={{ rotate: initialPolaroidRotations[index] }}
                     style={{
                     position: "absolute",
                     ...polaroid,
@@ -156,6 +172,7 @@ const PostIts = () => {
                     <img
                     src={polaroid.src}
                     alt={polaroid.caption}
+                    draggable={false}
                     style={{
                         width: "100%",
                         height: "80%",

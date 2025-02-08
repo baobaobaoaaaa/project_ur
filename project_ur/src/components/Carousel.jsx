@@ -3,11 +3,20 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Navigation, Pagination, Autoplay, EffectCube, EffectCoverflow, EffectFlip, EffectFade } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Autoplay,
+  EffectCube,
+  EffectCoverflow,
+  EffectFlip,
+  EffectFade,
+} from "swiper/modules";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaPlay, FaPause, FaDownload, FaTimes } from "react-icons/fa";
-import "project_ur/src/CarrouselStyles.css"
+import "project_ur/src/CarrouselStyles.css";
 import ScrollProgressWheel from "./ScrollProgressWheel";
+import { AnimatePresence, motion } from "framer-motion";
 
 import img1 from "../assets/480_361.jpg";
 import img2 from "../assets/480_364.jpg";
@@ -19,7 +28,11 @@ import img7 from "../assets/480_370.jpg";
 import img8 from "../assets/480_371.png";
 import img9 from "../assets/480_372.png";
 
-export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
+export const Carousel = ({
+  setIsModalOpen,
+  isModalOpen,
+  onAchievementUnlock,
+}) => {
   // console.log("onAchievementUnlock recibido en Carousel.jsx:", onAchievementUnlock);
   const swiperRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -27,29 +40,25 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
   const [currentImage, setCurrentImage] = useState("");
   const [slideChangeCount, setSlideChangeCount] = useState(0);
   const [hasPausedCarousel, setHasPausedCarousel] = useState(false);
-  const [modalOpenCount, setModalOpenCount] = useState(0);//contador de veces que se abrio el modal
+  const [modalOpenCount, setModalOpenCount] = useState(0); //contador de veces que se abrio el modal
   const [hasLoggedManualChange, setHasLoggedManualChange] = useState(false);
   const [manualSlideChangeCount, setManualSlideChangeCount] = useState(0);
 
-
   const calculateProgress = () => {
-    return (activeIndex / (images.length - 1));
+    return activeIndex / (images.length - 1);
   };
 
-
-
   const images = [
-    { src: img1, caption: "Recuerdo 1" },
-    { src: img2, caption: "Recuerdo 2" },
-    { src: img3, caption: "Recuerdo 3" },
-    { src: img4, caption: "Recuerdo 4" },
-    { src: img5, caption: "Recuerdo 5" },
-    { src: img6, caption: "Recuerdo 6" },
-    { src: img7, caption: "Recuerdo 7" },
-    { src: img8, caption: "Recuerdo 8" },
-    { src: img9, caption: "Recuerdo 9" },
+    { src: img1, caption: "Raft" },
+    { src: img2, caption: "Raft" },
+    { src: img3, caption: "Raft" },
+    { src: img4, caption: "Raft " },
+    { src: img5, caption: "Raft" },
+    { src: img6, caption: "Raft" },
+    { src: img7, caption: "Elden Ring" },
+    { src: img8, caption: "Momento mágico en Elden Ring" },
+    { src: img9, caption: "Elden Ring" },
   ];
-
 
   const toggleAutoplay = () => {
     if (swiperRef.current) {
@@ -58,8 +67,12 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
       } else {
         swiperRef.current.autoplay.stop();
         // logro pausar manualmente
-        if(!hasPausedCarousel && onAchievementUnlock){
-          onAchievementUnlock("carrusel","Momento de Reflexion","Has pausado las imagenes por primera vez.");
+        if (!hasPausedCarousel && onAchievementUnlock) {
+          onAchievementUnlock(
+            "carrusel",
+            "Momento de Reflexion",
+            "Has pausado las imagenes por primera vez."
+          );
           setHasPausedCarousel(true);
         }
       }
@@ -76,7 +89,6 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
   const handleTransitionStart = () => {
     console.log("Transición iniciada");
   };
-  
 
   const handleManualSlideChange = () => {
     setManualSlideChangeCount((prevCount) => {
@@ -134,29 +146,39 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
     };
   }, []);
 
- 
-
   const openModal = (src) => {
     setCurrentImage(src);
     setIsModalOpen(true);
-    setModalOpenCount((prev) =>{
+    setModalOpenCount((prev) => {
       const newCount = prev + 1;
       // console.log("contador de veces que se abrio el modal",newCount);
-      if(newCount === 1 && onAchievementUnlock){
+      if (newCount === 1 && onAchievementUnlock) {
         // console.log("primer recuerdo");
-        onAchievementUnlock("carrusel","Primer Recuerdo","Has abierto el primer recuerdo.");
+        onAchievementUnlock(
+          "carrusel",
+          "Primer Recuerdo",
+          "Has abierto el primer recuerdo."
+        );
       }
-      if(newCount === 3 && onAchievementUnlock){
+      if (newCount === 3 && onAchievementUnlock) {
         // console.log("tercer recuerdo");
-        onAchievementUnlock("carrusel","Tercer Recuerdo","Has abierto 3 recuerdos.");
+        onAchievementUnlock(
+          "carrusel",
+          "Tercer Recuerdo",
+          "Has abierto 3 recuerdos."
+        );
       }
-      if(newCount === 5 && onAchievementUnlock){
+      if (newCount === 5 && onAchievementUnlock) {
         // console.log("quinto recuerdo");
-        onAchievementUnlock("carrusel","Viajera Inalcanzable","Has abierto 5 recuerdos.");
+        onAchievementUnlock(
+          "carrusel",
+          "Viajera Inalcanzable",
+          "Has abierto 5 recuerdos."
+        );
       }
       return newCount;
     });
-    };
+  };
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -177,17 +199,24 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
         borderRadius: "10px",
         background: "rgba(241, 224, 240, 0.6)",
         boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
-        
       }}
     >
       <Swiper
-        modules={[Navigation, Pagination, Autoplay,EffectCoverflow,EffectCube,EffectFlip,EffectFade]}
+        modules={[
+          Navigation,
+          Pagination,
+          Autoplay,
+          EffectCoverflow,
+          EffectCube,
+          EffectFlip,
+          EffectFade,
+        ]}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
         onTransitionStart={handleTransitionStart}
         onSlideChange={(swiper) => {
-          setActiveIndex(swiper.realIndex)
+          setActiveIndex(swiper.realIndex);
           handleSlideChange(swiper);
         }}
         spaceBetween={30}
@@ -214,12 +243,18 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
         }}
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index} style={{width:"100%",height:"100%"}}>
-            <div style={{ textAlign: "left" }}>
+          <SwiperSlide key={index} style={{ width: "100%", height: "100%" }}>
+            <motdiv style={{ textAlign: "left" }}>
               <img
                 src={image.src}
                 alt={image.caption}
-                style={{ height:"100%",width: "100%", borderRadius: "10px", cursor: "pointer", objectFit: "cover" }}
+                style={{
+                  height: "100%",
+                  width: "100%",
+                  borderRadius: "10px",
+                  cursor: "pointer",
+                  objectFit: "cover",
+                }}
                 onClick={() => openModal(image.src)}
               />
               {/* Boton de descarga dentro del carrusel */}
@@ -237,8 +272,10 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
                   textDecoration: "none",
                   boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
                 }}
-                ><FaDownload/></a>
-            </div>
+              >
+                <FaDownload />
+              </a>
+            </motdiv>
           </SwiperSlide>
         ))}
         <div className="custom-prev">
@@ -266,18 +303,46 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
           boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
         }}
       >
-        <div
-          style={{
-            flex: 1,
-            textAlign: "left",
-            fontSize: "44px",
-            color: "#ff758c",
-            fontWeight: "bold",
-            fontFamily: "'Pacifico', cursive",
-          }}
-        >
-          {images[activeIndex].caption}
-        </div>
+        <AnimatePresence mode="wait">
+  <motion.div
+    key={activeIndex} // La clave única asegura que se re-renderice
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 0.5 }}
+    style={{
+      flex: 1,
+      textAlign: "left",
+      fontSize: "40px",
+      color: "#ff758c",
+      fontWeight: "bold",
+      fontFamily: "'Pacifico', cursive",
+      overflow: "hidden",
+      display: "inline-block",
+    }}
+  >
+    {images[activeIndex].caption.split(" ").map((char, index) => (
+      <motion.span
+        key={index}
+        initial={{ opacity: 0, y: "100%" }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: "-100%" }}
+        transition={{
+          duration: 0.25,
+          delay: index * 0.01, // Retraso para el efecto de ola
+          ease: "easeOut",
+        }}
+        style={{
+          display: "inline-block",
+          whiteSpace: char === " " ? "pre" : "normal", // Mantenimiento del espacio
+        }}
+      >
+        {char === " " ? "\u00A0" : char} {/* Espacio no envolvente */}
+      </motion.span>
+    ))}
+  </motion.div>
+</AnimatePresence>
+
 
         <div
           style={{
@@ -287,8 +352,9 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
             alignItems: "center",
           }}
         >
-          <button
+          <motion.button
             onClick={toggleAutoplay}
+            whileHover={{ scale: 1.1 }}
             style={{
               width: "60px",
               height: "60px",
@@ -305,7 +371,7 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
             }}
           >
             {isPaused ? <FaPlay /> : <FaPause />}
-          </button>
+          </motion.button>
         </div>
       </div>
 
@@ -326,16 +392,16 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
           onClick={closeModal}
         >
           <div
-          style={{
-            position: "relative",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            maxHeight: "90%",
-            maxWidth:"1700px",
-            width: "100%",
-            padding: "30px",
-          }}
+            style={{
+              position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              maxHeight: "90%",
+              maxWidth: "1700px",
+              width: "100%",
+              padding: "30px",
+            }}
           >
             <img
               src={currentImage}
@@ -362,25 +428,27 @@ export const Carousel = ({setIsModalOpen,isModalOpen,onAchievementUnlock}) => {
                 textDecoration: "none",
                 boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
               }}
-              ><FaDownload/> Descargar</a>
-              {/* Boton de cerrar en el modal */}
-              <a
-                style={{
-                  position: "absolute",
-                  top: "50px",
-                  left: "140px",
-                  background: "#ff758c",
-                  color: "white",
-                  padding: "5px 10px",
-                  borderRadius: "71px",
-                  textDecoration: "none",
-                  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
-                  alignContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <FaTimes/>
-              </a>
+            >
+              <FaDownload /> Descargar
+            </a>
+            {/* Boton de cerrar en el modal */}
+            <a
+              style={{
+                position: "absolute",
+                top: "50px",
+                left: "140px",
+                background: "#ff758c",
+                color: "white",
+                padding: "5px 10px",
+                borderRadius: "71px",
+                textDecoration: "none",
+                boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+                alignContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <FaTimes />
+            </a>
           </div>
         </div>
       )}

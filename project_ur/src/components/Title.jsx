@@ -29,29 +29,9 @@ const Title = ({ text }) => {
         {text}
       </motion.h1>
 
-      {/* Decoración flotante */}
-      {Array.from({ length: 5 }).map((_, index) => (
-        <motion.div
-          key={index}
-          style={{
-            position: "absolute",
-            width: "10px",
-            height: "10px",
-            backgroundColor: index % 2 === 0 ? "#FFC1E3" : "#FF99B5",
-            borderRadius: "50%",
-            top: `${Math.random() * 50}px`,
-            left: `${Math.random() * 100 - 50}%`,
-          }}
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 2 + Math.random(),
-            repeat: Infinity,
-          }}
-        />
-      ))}
+
     </motion.div>
+      
   );
 };
 
