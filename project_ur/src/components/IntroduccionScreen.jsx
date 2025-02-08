@@ -57,7 +57,7 @@ const IntroductionScreen = ({ onFinish }) => {
         setFadeOut(true); // Hace fade-out y llama a onFinish
         setTimeout(() => {
           onFinish(); // Finaliza la introducción
-        }, 2400); // Tiempo suficiente para el fade-out
+        }, 300); // Tiempo suficiente para el fade-out
       }, 1500); // Tiempo suficiente para el fade-in
     }, 1500); // Tiempo suficiente para la animación de las cortinas
   };
@@ -103,21 +103,21 @@ const IntroductionScreen = ({ onFinish }) => {
       {/* Fondo de fade-in y fade-out */}
       {fadeIn && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: fadeOut ? 0 : 1 }}
-          transition={{ duration: 2 }}
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            backgroundColor: "#FFADC4",
-            zIndex: 3000,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: fadeOut ? 0 : 1 }}
+        transition={{ duration: 1 }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "#FFADC4",
+          zIndex: 3000,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
         >
           <motion.h1
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -126,12 +126,15 @@ const IntroductionScreen = ({ onFinish }) => {
             style={{
               color: "white",
               fontSize: "2.5rem",
-              textShadow: "0px 2px 5px rgba(0, 0, 0, 0.3)",
-              textAlign: "center",
               fontWeight: "bold",
+              padding: "20px 40px",
+              borderRadius: "15px",
+              textAlign: "center",
+              fontFamily: "'Poppins', sans-serif",
             }}
           >
-            ¡Bienvenida a Proyecto UR!
+            <p style={{margin:0}}>¡Bienvenida a Proyecto UR!</p>
+            
           </motion.h1>
         </motion.div>
       )}
@@ -140,7 +143,7 @@ const IntroductionScreen = ({ onFinish }) => {
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: fadeOut ? 0 : 1 }}
-          transition={{ duration: fadeOut ? 1 : 0.5 }}
+          transition={{ duration: fadeOut ? 1 : 1 }}
           style={{
             position: "fixed",
             top: 0,
@@ -215,7 +218,7 @@ const IntroductionScreen = ({ onFinish }) => {
             alt="Toro Inoue"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
             style={{ width: "150px", marginBottom: "20px" }}
             whileHover={{ scale: 1.1 }}
           />

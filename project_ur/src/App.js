@@ -15,6 +15,8 @@ import IntroductionScreen from "./components/IntroduccionScreen";
 import ToroWithBubble from "./components/ToroWithBubble";
 import CursorFollower from "./components/CursorFollower";
 import PostIt from "./components/Post-it";
+import Title from "./components/Title";
+import KeychainPendulum from "./components/KeychainPendulum";
 
 
 function App() {
@@ -205,7 +207,7 @@ function App() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.2 }}
               >
-                Recuerdos
+                <Title text="Recuerdos" />
               </motion.h1>
             </header>
 
@@ -223,6 +225,11 @@ function App() {
             <section>
               <PostIt message="Este es un mensaje especial para ti. ¡Espero que te guste!" />
             </section>
+
+            {/* LLAVERO */}
+            <div style={{ position:"absolute",top:"966px",left:"450px" }}>
+              <KeychainPendulum />
+            </div>
 
             {/* Seccion de mensajes de prueba */}
             <section>

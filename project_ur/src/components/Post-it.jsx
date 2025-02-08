@@ -10,6 +10,8 @@ import globosonido6 from "project_ur/src/audio/effects/zapsplat_cartoon_pop_sing
 import globosonido7 from "project_ur/src/audio/effects/zapsplat_cartoon_pop_single_short_classic_007_106557.mp3";
 
 import image1 from "project_ur/src/assets/images/toroxd.jpg"   
+import image2 from "project_ur/src/assets/images/toro2.jpg"
+
 
 const doodles = [
   { emoji: "☁️", top: "50px", left: "150px" },
@@ -21,7 +23,7 @@ const doodles = [
 
 const polaroids = [
     { src: image1, caption: "Un día especial", top: "300px", left: "50px" },
-    { src: image1, caption: "Recuerdo feliz", top: "500px", right: "100px" },
+    { src: image2, caption: "Recuerdo feliz", top: "500px", right: "100px" },
   ];
 
 const sounds = [
