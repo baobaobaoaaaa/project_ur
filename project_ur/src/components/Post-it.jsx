@@ -25,7 +25,10 @@ const messages = [
   "No se te olvide tomar awa 💧",
   "- Dibujar como funciona el corazon",
   "Comprar algo dulcecito",
-  "Te quiero muxooooooooooooooo"
+  "Te quiero muxooooooooooooooo",
+  "Recuerdos bonitos",
+  "WUAAAAAJA",
+  "Fakiu <3",
 ];
 
 const polaroids = [
@@ -66,7 +69,7 @@ const playRandomSound = () => {
   new Audio(randomSound).play();
 };
 
-const PostIts = () => {
+const PostIts = ({onAchievementUnlock}) => {
   
   const positions = [
     { top: "-959px", left: "0px" }, // Superior izquierdo
@@ -77,6 +80,9 @@ const PostIts = () => {
     { top: "-115px", right: "100px" }, // Medio derecho}
     { top: "-110px", right: "320px" }, // Medio derecho}
     { top: "-140px", right: "500px" }, // Medio derecho}
+    { top: "1650px", left: "760px"},
+    { top: "-588px", left: "-140px" }, // Superior izquierdo
+    { top: "-400px", left: "-290px" }, // Medio izquierdo
   ];
   const rotations = Array.from(
     { length: messages.length },
@@ -84,7 +90,32 @@ const PostIts = () => {
   );
 
   const colors = ["#fdfd96", "#ffabab", "#ffc3a0", "#ffcbf2", "#a0c4ff"];
-  const textRotations = [-31, 12, -4, 7, 5,12,-34,-11,2]; // Rotaciones para el texto
+  const textRotations = [-31, 12, -4, 7, 5,12,-34,-11,22,-12,11,77]; // Rotaciones para el texto
+  const [hasMovedPostit, setHasMovedPostit] = React.useState(false);
+  const [hasMovedPolaroid, setHasMovedPolaroid] = React.useState(false);
+
+
+  const handlePolaroidDragEnd = () => {
+    if (!hasMovedPolaroid && onAchievementUnlock) {
+      onAchievementUnlock(
+        "polaroid",
+        "Recuerdos en fotos",
+        "Has movido una polaroid por primera vez."
+      );
+    }
+    setHasMovedPolaroid(true);
+  }
+
+  const handlePostitDragEnd = () => {
+    if (!hasMovedPostit && onAchievementUnlock) {
+      onAchievementUnlock(
+        "postit",
+        "Organizador de ideas",
+        "Has movido un post-it por primera vez."
+      );
+    }
+    setHasMovedPostit(true);
+  }
 
   return (
     <div style={{ position: "relative" }}>
@@ -102,6 +133,14 @@ const PostIts = () => {
               setTimeout(() => {
                 document.getElementById(`post-it-${index}`).style.transform = `rotate(${initialRotations[index]}deg)`;
               }, 100); // Tiempo para evitar conflictos visuales
+              if (!hasMovedPostit && onAchievementUnlock) {
+                onAchievementUnlock(
+                  "postit",
+                  "Organizador de ideas",
+                  "Has movido un post-it por primera vez."
+                );
+              }
+              setHasMovedPostit(true);
             }}
             id={`post-it-${index}`}
             whileDrag={playRandomSound}
@@ -167,7 +206,8 @@ const PostIts = () => {
                     drag
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     key={index}
-                    whileHover={{ scale: 1.9 ,rotate: 4 || -4}}
+                    whileHover={{ scale: 1.6 ,rotate: 4 || -4}}
+                    onDragEnd={handlePolaroidDragEnd}
                     whileDrag={playRandomSound}
                     initial={{ rotate: initialPolaroidRotations[index] }}
                     animate={{ rotate: initialPolaroidRotations[index] }}

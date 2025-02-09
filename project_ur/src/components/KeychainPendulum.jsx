@@ -7,7 +7,7 @@ import image4 from '../assets/images/raze.png';
 import image5 from '../assets/images/raze2.png';
 import image6 from '../assets/images/raze3.png';
 
-const KeychainPendulumPointer = () => {
+const KeychainPendulumPointer = ({onAchievementUnlock}) => {
 
 
   const images = [image1, image2, image3, image4, image5, image6];
@@ -145,7 +145,15 @@ const KeychainPendulumPointer = () => {
 
     initialOffsetXRef.current = null;
     initialPointerYRef.current = null;
+
+    // logro
+    if(onAchievementUnlock){
+      onAchievementUnlock("keychain", "LLavero", "Has movido el llavero por primera vez .");
+    }
   };
+
+
+
 
   return (
     <div

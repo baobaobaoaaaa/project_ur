@@ -1,12 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import toroimagenpres from "project_ur/src/assets/presentation/toroinouesilueta.png";
 
-const ToroWithBubble = ({ currentAchievement }) => {
+const ToroWithBubble = ({ currentAchievement,onAchievementUnlock }) => {
   const [currentText, setCurrentText] = useState(
-    "¡Bienvenido! Explora todo lo que esta página tiene para ti."
+    "¡Bienvenida! Explora todoooo lo que hay en la página."
   );
 
   const observer = useRef(null);
+
+  const handleToroClick = () => {
+    if (onAchievementUnlock) {
+      onAchievementUnlock(
+        "toro",
+        "Primer toque",
+        "Has interactuado con Toro por primera vez."
+      );
+    }
+  };
 
   // Generar mensajes según el tipo de logro
   const generateAchievementMessage = (achievement) => {
@@ -19,6 +29,13 @@ const ToroWithBubble = ({ currentAchievement }) => {
         return "¡Un cinéfilo en acción! Mira más videos.";
       case "carrusel":
         return "¡Explora tus recuerdos en el carrusel!";
+      case "toro":
+        return "Me has tocado. ¡Gracias!";
+      case "polaroid":
+        return "Has movido mis fotos, salgo muy guapo la verdad :)";
+      case "postit":
+        return "Necesito anotar que debo comprar leche"
+      
       default:
         return null; // No mostrar mensaje si no se puede generar uno específico
     }
@@ -140,7 +157,7 @@ const ToroWithBubble = ({ currentAchievement }) => {
         <p>{currentText}</p>
         <div style={bubbleArrowStyle}></div>
       </div>
-      <img src={toroimagenpres} alt="Toro Inoue" style={toroStyle} />
+      <img src={toroimagenpres} alt="Toro Inoue" onClick={handleToroClick} style={toroStyle} />
     </div>
   );
 };

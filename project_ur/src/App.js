@@ -11,6 +11,11 @@ import ShootingStars from "./components/ShootingStars";
 import iconCarrusel from "project_ur/src/components/icons/cinema.png";
 import iconMusic from "project_ur/src/components/icons/music-player.png";
 import iconGame from "project_ur/src/components/icons/game-controller.png";
+import iconToro from "./components/icons/icons8-gato-100.png";
+import iconVolume from "./components/icons/icons8-altavoz-64.png";
+import iconKeychain from "./components/icons/icons8-key-chain-64.png";
+import iconPostIt from "./components/icons/icons8-post-it-64.png";
+import iconPolaroid from "./components/icons/icons8-cámara-instantánea-50.png";
 import IntroductionScreen from "./components/IntroduccionScreen";
 import ToroWithBubble from "./components/ToroWithBubble";
 import CursorFollower from "./components/CursorFollower";
@@ -51,6 +56,27 @@ function App() {
       background: "linear-gradient(135deg, #ffd4e5, #ffdeef)", // Pastel suave
       color: "#5e0059", // Texto oscuro con un toque de contraste
     },
+    toro: {
+      background: "linear-gradient(135deg, #ff9e9e, #ff9e9e)", // Rojo intenso
+      color: "#4a0000", // Texto oscuro
+    },
+    volume: {
+      background: "linear-gradient(135deg, #ff9e9e, #ff9e9e)", // Rojo intenso
+      color: "#4a0000", // Texto oscuro
+    },
+    keychain: {
+      background: "linear-gradient(135deg, #ff9e9e, #ff9e9e)", // Rojo intenso
+      color: "#4a0000", // Texto oscuro
+    },
+    postit: {
+      background: "linear-gradient(135deg, #ff9e9e, #ff9e9e)", // Rojo intenso
+      color: "#4a0000", // Texto oscuro
+    },
+    polaroid: {
+      background: "linear-gradient(135deg, #ff9e9e, #ff9e9e)", // Rojo intenso
+      color: "#4a0000", // Texto oscuro
+    },
+    
   };
 
   const removeAchievement = (type, id) => {
@@ -79,10 +105,17 @@ function App() {
       unlockedAchievements.current.add(achievementId);
       // Seleccionar el icono según el tipo de logro
       const icons = {
-        song: "🎵", // Emoji para canciones
-        video: "🎮", // Emoji para videos
-        carrusel: "📷"
+        song: "🎵", // Canciones
+        video: "📹", // Videos
+        carrusel: "📷", // Carrusel
+        toro: "🐾", // Logro al tocar al toro
+        volume: "🔊", // Ajuste de volumen
+        keychain: "🔑", // Llavero
+        postit: "📝", // Post-it
+        polaroid: "📸", // Polaroid
+        all: "🏆", // Logro al completar todos
       };
+      
 
   
       // Crear un nuevo logro
@@ -175,7 +208,7 @@ function App() {
 
 
           {/* Presentacion */}
-          <ToroWithBubble currentText="Bienvenido a la pagina xddd" currentAchievement={currentAchievement}/>
+          <ToroWithBubble currentText="Bienvenido a la pagina " currentAchievement={currentAchievement} onAchievementUnlock={onAchievementUnlock}/>
           {/* Fin presentacion */}
 
           {/* CursorFollowe */}
@@ -223,29 +256,29 @@ function App() {
             </div>
             {/* postit */}
             <section>
-              <PostIt/>
+              <PostIt onAchievementUnlock={onAchievementUnlock}/>
             </section>
 
             {/* LLAVEROs */}
             <div style={{ position:"absolute",top:"966px",left:"450px" }}>
-              <KeychainPendulum />
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} />
               
             </div>
             <div style={{ position:"absolute",top:"-17px",left:"100px" }}>
-              <KeychainPendulum/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
             </div>
             <div style={{ position:"absolute",top:"1500px",left:"630px" }}>
-              <KeychainPendulum/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
             </div>
             <div style={{ position:"absolute",top:"1600px",left:"1100px",zIndex:1 }}>
-              <KeychainPendulum/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
             </div>
             <div style={{ position:"absolute",top:"2260px",left:"760px",zIndex:11111 }}>
-              <KeychainPendulum/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
             </div>
             {/* llavero psp */}
             <div style={{ position:"absolute",top:"2750px",left:"630px",zIndex:11111 }}> 
-              <KeychainPendulum/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
             </div>
 
             {/* Seccion de mensajes de prueba */}
@@ -336,7 +369,20 @@ function App() {
                           ? iconMusic
                           : currentAchievement.type === "video"
                           ? iconGame
-                          : iconCarrusel
+                          : currentAchievement.type === "carrusel"
+                          ? iconCarrusel
+                          : currentAchievement.type === "toro"
+                          ? iconToro
+                          : currentAchievement.type === "volume"
+                          ? iconVolume
+                          : currentAchievement.type === "keychain"
+                          ? iconKeychain
+                          : currentAchievement.type === "postit"
+                          ? iconPostIt
+                          : currentAchievement.type === "polaroid"
+                          ? iconPolaroid
+                          : null
+                          
                       }
                       alt={`Icono de ${currentAchievement.type}`}
                       style={{
