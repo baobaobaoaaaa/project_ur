@@ -7,13 +7,13 @@ const MessageSection = ({ title, message, sectionType }) => {
   return (
     <motion.div
       style={styles.baseStyle}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
-      whileHover={{
-        scale: 1.02,
-        boxShadow: "0 8px 30px rgba(0, 0, 0, 0.3)",
-      }}
+      // initial={{ opacity: 0, scale: 0.9 }}
+      // animate={{ opacity: 1, scale: 1 }}
+      // transition={{ duration: 0.6, ease: "easeInOut" }}
+      // whileHover={{
+      //   scale: 1.02,
+      //   boxShadow: "0 8px 30px rgba(0, 0, 0, 0.3)",
+      
     >
       <div style={styles.iconStyle}>{styles.icon}</div>
       <h2 style={styles.titleStyle}>{title}</h2>

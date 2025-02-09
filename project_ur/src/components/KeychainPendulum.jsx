@@ -7,14 +7,12 @@ import image4 from '../assets/images/raze.png';
 import image5 from '../assets/images/raze2.png';
 import image6 from '../assets/images/raze3.png';
 
-const KeychainPendulumPointer = ({onAchievementUnlock}) => {
+const KeychainPendulumPointer = ({onAchievementUnlock,startIndex}) => {
 
 
   const images = [image1, image2, image3, image4, image5, image6];
-  const [currentImage, setCurrentImage] = useState(0);
-  const randomImage = images[Math.floor(Math.random() * images.length)];
-
-
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentImage = images[startIndex % images.length];
 
   // Motion values para la rotación y el desplazamiento vertical
   const rotate = useMotionValue(0);
@@ -188,7 +186,7 @@ const KeychainPendulumPointer = ({onAchievementUnlock}) => {
 
           {/* Imagen del llavero: se captura el puntero para arrastrarla directamente */}
           <motion.img
-            src={randomImage}
+            src={currentImage}
             alt="Llavero"
             draggable={false}
             style={{

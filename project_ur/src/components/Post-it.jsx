@@ -29,6 +29,7 @@ const messages = [
   "Recuerdos bonitos",
   "WUAAAAAJA",
   "Fakiu <3",
+  "Se llama Proyecto UR por tus dos primeras iniciales y porque en ingles significa ERES TU(You are o U R)",
 ];
 
 const polaroids = [
@@ -83,6 +84,7 @@ const PostIts = ({onAchievementUnlock}) => {
     { top: "1650px", left: "760px"},
     { top: "-588px", left: "-140px" }, // Superior izquierdo
     { top: "-400px", left: "-290px" }, // Medio izquierdo
+    { top: "1800px", left: "210px" }, // Superior derecho
   ];
   const rotations = Array.from(
     { length: messages.length },
@@ -90,7 +92,7 @@ const PostIts = ({onAchievementUnlock}) => {
   );
 
   const colors = ["#fdfd96", "#ffabab", "#ffc3a0", "#ffcbf2", "#a0c4ff"];
-  const textRotations = [-31, 12, -4, 7, 5,12,-34,-11,22,-12,11,77]; // Rotaciones para el texto
+  const textRotations = [-31, 12, -4, 7, 5,12,-34,-11,22,-12,11,7]; // Rotaciones para el texto
   const [hasMovedPostit, setHasMovedPostit] = React.useState(false);
   const [hasMovedPolaroid, setHasMovedPolaroid] = React.useState(false);
 

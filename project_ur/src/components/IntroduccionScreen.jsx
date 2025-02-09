@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import toroImage from "project_ur/src/assets/presentation/toroinouesilueta.png";
 
+
 const IntroductionScreen = ({ onFinish }) => {
   const messages = [
-    "¡Hola! Soy Toro.",
+    "¡Hola Bao! Soy Toro.",
     "Espero que disfrutes esta página.",
     "Está hecha con mucho cariño para ti.",
+    "Solo queria darte una indicación antes de empezar.",
+    "Haz click en todo lo que veas, ¡pueden haber muchas sorpresas!",
   ];
 
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);

@@ -1,10 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import toroimagenpres from "project_ur/src/assets/presentation/toroinouesilueta.png";
+import toro1 from "../assets/presentation/toro1an.png"
+import toro2 from "../assets/presentation/toro2an.png"
+import toro3 from "../assets/presentation/toro3an.png"
+import { motion } from "framer-motion";
 
 const ToroWithBubble = ({ currentAchievement,onAchievementUnlock }) => {
   const [currentText, setCurrentText] = useState(
     "¡Bienvenida! Explora todoooo lo que hay en la página."
   );
+
+
+  const images = [toro1, toro2, toro3];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const observer = useRef(null);
 
@@ -108,6 +116,15 @@ const ToroWithBubble = ({ currentAchievement,onAchievementUnlock }) => {
     }
   }, [currentAchievement]);
 
+  useEffect(() => {
+    // Cambiar el modelo cada 3 segundos
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval); // Limpiar el intervalo al desmontar el componente
+  }, [images.length]);
+
   // Estilos
   const containerStyle = {
     position: "fixed",
@@ -149,6 +166,10 @@ const ToroWithBubble = ({ currentAchievement,onAchievementUnlock }) => {
   const toroStyle = {
     width: "100px",
     height: "auto",
+    dragable: "false",
+    userSelect: "none",
+    cursor: "pointer",
+    
   };
 
   return (
@@ -157,7 +178,7 @@ const ToroWithBubble = ({ currentAchievement,onAchievementUnlock }) => {
         <p>{currentText}</p>
         <div style={bubbleArrowStyle}></div>
       </div>
-      <img src={toroimagenpres} alt="Toro Inoue" onClick={handleToroClick} style={toroStyle} />
+      <motion.img src={images[currentIndex]} alt="Toro Inoue" onClick={handleToroClick} style={toroStyle}/>
     </div>
   );
 };

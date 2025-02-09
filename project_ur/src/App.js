@@ -16,12 +16,14 @@ import iconVolume from "./components/icons/icons8-altavoz-64.png";
 import iconKeychain from "./components/icons/icons8-key-chain-64.png";
 import iconPostIt from "./components/icons/icons8-post-it-64.png";
 import iconPolaroid from "./components/icons/icons8-cámara-instantánea-50.png";
+import iconTrofeo from "./components/icons/icons8-trofeo-64.png";
 import IntroductionScreen from "./components/IntroduccionScreen";
 import ToroWithBubble from "./components/ToroWithBubble";
 import CursorFollower from "./components/CursorFollower";
 import PostIt from "./components/Post-it";
 import Title from "./components/Title";
 import KeychainPendulum from "./components/KeychainPendulum";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 
 function App() {
@@ -76,24 +78,14 @@ function App() {
       background: "linear-gradient(135deg, #ff9e9e, #ff9e9e)", // Rojo intenso
       color: "#4a0000", // Texto oscuro
     },
+    // color dorado
+    all: {
+      background: "linear-gradient(135deg, #ffcc00, #ffcc00)",
+      color: "#4a4a00",
+    },
     
   };
 
-  const removeAchievement = (type, id) => {
-    if (type === "song") {
-      setSongAchievements((prev) =>
-        prev.filter((achievement) => achievement.id !== id)
-      );
-    } else if (type === "video") {
-      setVideoAchievements((prev) =>
-        prev.filter((achievement) => achievement.id !== id)
-      );
-    } else if (type === "carrusel") {
-      setCarruselAchievements((prev) =>
-        prev.filter((achievement) => achievement.id !== id)
-      );
-    }
-  };
 
   const unlockedAchievementsQueue = []; // Cola global de logros
   let isAchievementVisible = false;
@@ -157,7 +149,7 @@ function App() {
     setTimeout(() => {
       setCurrentAchievement(null);
       showNextAchievement();
-    }, 5000); // Ajusta el tiempo según tus necesidades
+    }, 7000); // Ajusta el tiempo según tus necesidades
   };
   
   const enqueueAchievement = (achievement) => {
@@ -178,6 +170,9 @@ function App() {
       setTimeout(() => {
         setCurrentAchievement(null);
       }, 5000); // Ajusta el tiempo según tu preferencia
+    }
+    if(achievements.length === 13){
+      onAchievementUnlock("all", "Todos los logros", "Has desbloqueado todos los logros");
     }
   }, [achievementQueue, currentAchievement]);
 
@@ -261,25 +256,28 @@ function App() {
 
             {/* LLAVEROs */}
             <div style={{ position:"absolute",top:"966px",left:"450px" }}>
-              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} />
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} startIndex={0} />
               
             </div>
             <div style={{ position:"absolute",top:"-17px",left:"100px" }}>
-              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} startIndex={1}/>
             </div>
             <div style={{ position:"absolute",top:"1500px",left:"630px" }}>
-              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} startIndex={2}/>
             </div>
             <div style={{ position:"absolute",top:"1600px",left:"1100px",zIndex:1 }}>
-              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} startIndex={3}/>
             </div>
             <div style={{ position:"absolute",top:"2260px",left:"760px",zIndex:11111 }}>
-              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} startIndex={4}/>
             </div>
             {/* llavero psp */}
             <div style={{ position:"absolute",top:"2750px",left:"630px",zIndex:11111 }}> 
-              <KeychainPendulum onAchievementUnlock={onAchievementUnlock}/>
+              <KeychainPendulum onAchievementUnlock={onAchievementUnlock} startIndex={5}/>
             </div>
+
+            {/* Boton de scrollup */}
+            <ScrollToTopButton />
 
             {/* Seccion de mensajes de prueba */}
             <section>
@@ -381,7 +379,9 @@ function App() {
                           ? iconPostIt
                           : currentAchievement.type === "polaroid"
                           ? iconPolaroid
-                          : null
+                          : currentAchievement.type === "all"
+                          ? iconTrofeo
+                          : ""
                           
                       }
                       alt={`Icono de ${currentAchievement.type}`}
