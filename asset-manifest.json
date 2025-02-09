@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project_ur/static/css/main.659acee2.css",
-    "main.js": "/project_ur/static/js/main.50839e4d.js",
+    "main.js": "/project_ur/static/js/main.9a43ee0e.js",
     "static/media/eldenring.mp4": "/project_ur/static/media/eldenring.caf233efad155013723c.mp4",
     "static/media/locurabao2.mp4": "/project_ur/static/media/locurabao2.11e8806f37f2aace3658.mp4",
     "static/media/ervideo.mp4": "/project_ur/static/media/ervideo.9fd7cfdd4806afcc80de.mp4",
@@ -63,10 +63,10 @@
     "static/media/kurocursor.cur": "/project_ur/static/media/kurocursor.c083e50cae9fc15a14b6.cur",
     "static/media/torocursor2.cur": "/project_ur/static/media/torocursor2.3454992449efca07ff57.cur",
     "main.659acee2.css.map": "/project_ur/static/css/main.659acee2.css.map",
-    "main.50839e4d.js.map": "/project_ur/static/js/main.50839e4d.js.map"
+    "main.9a43ee0e.js.map": "/project_ur/static/js/main.9a43ee0e.js.map"
   },
   "entrypoints": [
     "static/css/main.659acee2.css",
-    "static/js/main.50839e4d.js"
+    "static/js/main.9a43ee0e.js"
   ]
 }
