@@ -101,7 +101,7 @@ const PSPVideoPlayer = ({onAchievementUnlock}) => {
   return (
     <div className="psp-container">
       {/* Marco de la PSP */}
-      <img src={pspFrame} alt="PSP Frame" className="psp-frame" />
+      <img src={pspFrame} alt="PSP Frame" className="psp-frame" draggable="false" />
 
       {/* Video dentro del marco */}
       <div className="psp-video-container">

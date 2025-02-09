@@ -195,9 +195,9 @@ export const Carousel = ({
         position: "relative",
         paddingBottom: "10px",
         margin: "0 auto",
-        border: "5px solid #ff9a9e",
-        borderRadius: "10px",
-        background: "rgba(241, 224, 240, 0.6)",
+        border: "25px solid white",
+        borderRadius: "1px",
+        background: "white",
         boxShadow: "0 8px 20px rgba(0, 0, 0, 0.3)",
       }}
     >
@@ -244,14 +244,16 @@ export const Carousel = ({
       >
         {images.map((image, index) => (
           <SwiperSlide key={index} style={{ width: "100%", height: "100%" }}>
-            <motdiv style={{ textAlign: "left" }}>
+            <div style={{ textAlign: "center" }}>
               <img
                 src={image.src}
                 alt={image.caption}
                 style={{
+                  marginTop: "20px",
+                  marginBottom: "-10px",
                   height: "100%",
                   width: "100%",
-                  borderRadius: "10px",
+                  borderRadius: "1px",
                   cursor: "pointer",
                   objectFit: "cover",
                 }}
@@ -275,7 +277,7 @@ export const Carousel = ({
               >
                 <FaDownload />
               </a>
-            </motdiv>
+            </div>
           </SwiperSlide>
         ))}
         <div className="custom-prev">
@@ -299,8 +301,8 @@ export const Carousel = ({
           height: "90%",
           padding: "30px 55px",
           background: "rgba(255, 255, 255, 0.8)",
-          borderRadius: "10px",
-          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
+          borderRadius: "1px",
+         
         }}
       >
         <AnimatePresence mode="wait">

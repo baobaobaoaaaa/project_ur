@@ -28,7 +28,7 @@ const Navbar = ({ unlockedAchievements }) => {
           onClick={() => document.getElementById("player").scrollIntoView()}
         />
         <NavButton
-          text="📞 Videos"
+          text="🌸 Videos"
           onClick={() => document.getElementById("videos").scrollIntoView()}
         />
 

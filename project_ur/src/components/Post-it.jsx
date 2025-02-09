@@ -23,15 +23,18 @@ const messages = [
   "Eres una ratita muy bonita 🎮",
   "No olvides lo especial que eres para mi 🌈",
   "No se te olvide tomar awa 💧",
+  "- Dibujar como funciona el corazon",
+  "Comprar algo dulcecito",
+  "Te quiero muxooooooooooooooo"
 ];
 
 const polaroids = [
   { src: image1, caption: "Un día especial", top: "300px", left: "50px" },
-  { src: image2, caption: "Recuerdo feliz", top: "500px", right: "100px" },
+  { src: image2, caption: "Recuerdo feliz", top: "500px", right: "-10px" },
   { src: image3, caption: "Momento mágico", top: "1000px", left: "30px" },
   { src: image4, caption: "Sonrisa eterna", top: "1100px", right: "50px" },
   { src: image6, caption: "Recuerdo inolvidable", top: "1500px", left: "1px" },
-  { src: image7, caption: "Momento especial", top: "700px", left: "10px" },
+  { src: image7, caption: "Momento especial", top: "700px", left: "-50px" },
   { src: image8, caption: "Recuerdo feliz", top: "100px", right: "100px" },
 ];
 
@@ -71,6 +74,9 @@ const PostIts = () => {
     { top: "-810px", right: "-280px" }, // Superior derecho
     { top: "-655px", right: "-260px" }, // Medio derecho
     { top: "-500px", right: "-290px" }, // Medio derecho}
+    { top: "-115px", right: "100px" }, // Medio derecho}
+    { top: "-110px", right: "320px" }, // Medio derecho}
+    { top: "-140px", right: "500px" }, // Medio derecho}
   ];
   const rotations = Array.from(
     { length: messages.length },
@@ -78,7 +84,7 @@ const PostIts = () => {
   );
 
   const colors = ["#fdfd96", "#ffabab", "#ffc3a0", "#ffcbf2", "#a0c4ff"];
-  const textRotations = [-31, 12, -4, 7, 5]; // Rotaciones para el texto
+  const textRotations = [-31, 12, -4, 7, 5,12,-34,-11,2]; // Rotaciones para el texto
 
   return (
     <div style={{ position: "relative" }}>
@@ -93,7 +99,7 @@ const PostIts = () => {
             whileHover={{ scale: 1.2, rotate: rotations[index] + 5 }}
             whileDrag={playRandomSound}
             onClick={playRandomSound}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.1 }}
             style={{
               position: "absolute",
               ...positions[index], // Ubicación en los laterales
@@ -155,6 +161,7 @@ const PostIts = () => {
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     key={index}
                     whileHover={{ scale: 1.5 ,rotate: 4 || -4}}
+                    whileDrag={playRandomSound}
                     initial={{ rotate: initialPolaroidRotations[index] }}
                     animate={{ rotate: initialPolaroidRotations[index] }}
                     style={{
@@ -167,6 +174,7 @@ const PostIts = () => {
                     boxShadow: "0 4px 10px rgba(0, 0, 0, 0.3)",
                     padding: "10px",
                     transform: `rotate(${Math.random() * 10 - 5}deg)`,
+                    zIndex: 100,
                     }}
                 >
                     <img
