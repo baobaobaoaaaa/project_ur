@@ -99,6 +99,7 @@ const ToroWithBubble = ({ currentAchievement }) => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    animation:"fade-in 1s ease-in-out",
     zIndex: 1000,
   };
 

@@ -269,7 +269,7 @@ function App() {
             <section id="videos">
               <PSPVideoPlayer onAchievementUnlock={onAchievementUnlock} style={{zIndex:-1}} />
             </section>
-            <MessageSection
+            <MessageSection style={{whiteSpace:"pre-line"}}
                 title="Para la Bao"
                 message="Tal vez no pueda regalonearte físicamente, aunque lo deseo muchísimo. Pero sí puedo regalonearte de esta forma.
                 Eres de mis personas favoritas de la vida y estoy eternamente agradecido por encontrarte.
@@ -277,8 +277,10 @@ function App() {
                 Lo hice para cuando estés triste, te sientas sola o simplemente quieras recordar momentos felices; puedas venir acá y recordar que siempre estaré para ti.
                 Me encanta pasar tiempo contigo, me encanta escucharte, me encanta mirar tus ojitos, ver tu carita que me encantaría besar por todos lados,
                 tus cachetitos tan preciosos, acariciar tu pelito, tu humor, tu risa, tu voz, lo que no te gusta, lo que te gusta, lo que odias,
-                lo que quieres… Me encanta pensar que te abrazo, que duermo contigo, me encanta todo de ti y quiero que sepas que este es un lugar seguro para ti.
+                lo que quieres… Me encanta pensar que te abrazo, que duermo contigo, me encanta todo de ti y quiero que sepas que este es un lugar seguro. Siempre que lo
+                necesites estaré para ti.
                 Te quiero muchísimo Bao.
+                Nicolás.
                 
                 "
                 

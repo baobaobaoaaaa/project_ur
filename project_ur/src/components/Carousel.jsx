@@ -27,6 +27,19 @@ import img6 from "../assets/480_369.png";
 import img7 from "../assets/480_370.jpg";
 import img8 from "../assets/480_371.png";
 import img9 from "../assets/480_372.png";
+import img10 from "../assets/413150_20250208001208_1.png";
+import img11 from "../assets/1245620_20250105231837_1.png";
+import img12 from "../assets/1245620_20250106012423_1.png";
+import img13 from "../assets/1245620_20250106004759_1.png";
+import img14 from "../assets/1245620_20250106012442_1.png";
+import img15 from "../assets/1245620_20250106012543_1.png";
+import img16 from "../assets/1245620_20250106012549_1.png";
+import img17 from "../assets/1245620_20250109021802_1.png";
+import img18 from "../assets/1245620_20250109022600_1.png";
+import img19 from "../assets/1245620_20250109023252_1.png";
+import img20 from "../assets/1245620_20250109023339_1.png";
+import img21 from "../assets/1245620_20250109024110_1.png";
+import img22 from "../assets/1245620_20250204235624_1.png";
 
 export const Carousel = ({
   setIsModalOpen,
@@ -49,15 +62,28 @@ export const Carousel = ({
   };
 
   const images = [
-    { src: img1, caption: "Raft" },
-    { src: img2, caption: "Raft" },
-    { src: img3, caption: "Raft" },
-    { src: img4, caption: "Raft " },
-    { src: img5, caption: "Raft" },
-    { src: img6, caption: "Raft" },
-    { src: img7, caption: "Elden Ring" },
-    { src: img8, caption: "Momento mágico en Elden Ring" },
-    { src: img9, caption: "Elden Ring" },
+    { src: img1, caption: "Bajo la luna" },
+    { src: img2, caption: "Navegando" },
+    { src: img3, caption: "Posando" },
+    { src: img4, caption: "Tutito " },
+    { src: img5, caption: "Fingiendo trabajar" },
+    { src: img6, caption: "Fingiendo trabajar otra vez" },
+    { src: img7, caption: "La boda" },
+    { src: img8, caption: "Momento mágico <3" },
+    { src: img9, caption: "Descanso en Nokron" },
+    { src: img10, caption: "Nuestra granjita" },
+    { src: img11, caption: "Mejorando armas" },
+    { src: img12, caption: "Visitando a Ranni" },
+    { src: img13, caption: ":)" },
+    { src: img14, caption: "Mostrando el estilo a la Ranni" },
+    { src: img15, caption: "Mostrando respeto a la Ranni 1" },
+    { src: img16, caption: "Mostrando respeto a la Ranni 2" },
+    { src: img17, caption: "Felicidad" },
+    { src: img18, caption: "Uuuuh" },
+    { src: img19, caption: "Implorandole a los dioses" },
+    { src: img20, caption: "Cabezazo bonito" },
+    { src: img21, caption: "Wuaja" },
+    { src: img22, caption: "Posando en el arbol quemado" },
   ];
 
   const toggleAutoplay = () => {

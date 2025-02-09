@@ -97,6 +97,13 @@ const PostIts = () => {
             initial={{ rotate: initialRotations[index]}}
             animate={{ rotate: initialRotations[index]}}
             whileHover={{ scale: 1.2, rotate: rotations[index] + 5 }}
+            onDragEnd={() => {
+              // Restablecer la posición y rotación inicial
+              setTimeout(() => {
+                document.getElementById(`post-it-${index}`).style.transform = `rotate(${initialRotations[index]}deg)`;
+              }, 100); // Tiempo para evitar conflictos visuales
+            }}
+            id={`post-it-${index}`}
             whileDrag={playRandomSound}
             onClick={playRandomSound}
             transition={{ duration: 0.1 }}
@@ -160,7 +167,7 @@ const PostIts = () => {
                     drag
                     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
                     key={index}
-                    whileHover={{ scale: 1.5 ,rotate: 4 || -4}}
+                    whileHover={{ scale: 1.9 ,rotate: 4 || -4}}
                     whileDrag={playRandomSound}
                     initial={{ rotate: initialPolaroidRotations[index] }}
                     animate={{ rotate: initialPolaroidRotations[index] }}

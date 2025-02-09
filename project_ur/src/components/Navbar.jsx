@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { faCamera,faMusic, faVideo } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navbar = ({ unlockedAchievements }) => {
   const [localAchievements, setLocalAchievements] = useState([]);
@@ -20,15 +22,15 @@ const Navbar = ({ unlockedAchievements }) => {
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         {/* Botones principales */}
         <NavButton
-          text="🌸 Carrusel"
+          text={<FontAwesomeIcon icon={faCamera} /> }
           onClick={() => document.getElementById("carrusel").scrollIntoView()}
         />
         <NavButton
-          text="🎶 Reproductor"
+          text={<FontAwesomeIcon icon={faMusic} />}
           onClick={() => document.getElementById("player").scrollIntoView()}
         />
         <NavButton
-          text="🌸 Videos"
+          text={<FontAwesomeIcon icon={faVideo} />}
           onClick={() => document.getElementById("videos").scrollIntoView()}
         />
 

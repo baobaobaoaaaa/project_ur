@@ -1,3 +1,4 @@
+import { sync } from "framer-motion";
 import React from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
@@ -33,15 +34,26 @@ const ParticlesBackground = () => {
               { value: "🔮", font: "Arial", style: "", weight: "400" },
             ],
           },
-          opacity: { minimunValuevalue: 0.6,maximumValue:1, random:true }, // Opacidad de las partículas
-          size: { value: 20, random:{enable:true, minimunValue:5,maximumValue:50}, // Tamaño de las partículas
-              animation:{
-                enable:true,
-                speed:3,
-                sync:true,
-              }
-        
-        }, // Tamaño de las partículas
+          opacity: { min: 0.6,max:1, random:true }, // Opacidad de las partículas
+          size: {
+            value: { min: 10, max: 40 }, // Tamaño aleatorio entre 10 y 40
+            animation: {
+              enable: true,
+              speed: 2, // Velocidad de cambio de tamaño
+              minimumValue: 10, // Tamaño mínimo durante la animación
+              sync: false, // Animación no sincronizada
+              startValue: "random", // Tamaño inicial aleatorio
+            },
+          },
+          rotate:{
+            value:{min:0 ,max:360},
+            direction:"random",
+            animation:{
+              enable:true,
+              speed:10,
+              sync:false
+            }
+          },
           move: {
             enable: true,
             speed: {min:0.2,max:2}, // Velocidad de movimiento
@@ -62,7 +74,7 @@ const ParticlesBackground = () => {
           },
           modes: {
             repulse: { distance: 100, duration: 0.4 }, // Distancia y duración al alejarse
-            push: { quantity: 5 }, // Cantidad de partículas añadidas al hacer clic
+            push: { quantity: 3 }, // Cantidad de partículas añadidas al hacer clic
           },
         },
       }}
