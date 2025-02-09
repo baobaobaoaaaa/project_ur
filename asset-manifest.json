@@ -1,17 +1,29 @@
 {
   "files": {
     "main.css": "/project_ur/static/css/main.659acee2.css",
-    "main.js": "/project_ur/static/js/main.74f646bb.js",
+    "main.js": "/project_ur/static/js/main.50839e4d.js",
     "static/media/eldenring.mp4": "/project_ur/static/media/eldenring.caf233efad155013723c.mp4",
     "static/media/locurabao2.mp4": "/project_ur/static/media/locurabao2.11e8806f37f2aace3658.mp4",
     "static/media/ervideo.mp4": "/project_ur/static/media/ervideo.9fd7cfdd4806afcc80de.mp4",
     "static/media/locurabao1.mp4": "/project_ur/static/media/locurabao1.71961bd52acbfcc697d1.mp4",
     "static/media/song2.mp3": "/project_ur/static/media/song2.aa358c36fc7e14e5cb4d.mp3",
+    "static/media/1245620_20250106012423_1.png": "/project_ur/static/media/1245620_20250106012423_1.c10b0a01d17f23120d3f.png",
     "static/media/480_372.png": "/project_ur/static/media/480_372.de64fb12f80600b31613.png",
     "static/media/For the First Time.mp3": "/project_ur/static/media/For the First Time.265a86525bb2cde591f0.mp3",
+    "static/media/1245620_20250106004759_1.png": "/project_ur/static/media/1245620_20250106004759_1.dbeddfd5bed831b82a6f.png",
     "static/media/Boku Wa Chotto.mp3": "/project_ur/static/media/Boku Wa Chotto.1bd29ff1de5745cfbc42.mp3",
+    "static/media/1245620_20250106012442_1.png": "/project_ur/static/media/1245620_20250106012442_1.6e7724fe219d4887d463.png",
+    "static/media/1245620_20250106012543_1.png": "/project_ur/static/media/1245620_20250106012543_1.7f6807cb50451769b40b.png",
+    "static/media/1245620_20250109022600_1.png": "/project_ur/static/media/1245620_20250109022600_1.62372841800040dbf593.png",
+    "static/media/1245620_20250106012549_1.png": "/project_ur/static/media/1245620_20250106012549_1.d846e86375564052515c.png",
+    "static/media/1245620_20250204235624_1.png": "/project_ur/static/media/1245620_20250204235624_1.ff5948906e447debeab6.png",
+    "static/media/1245620_20250109021802_1.png": "/project_ur/static/media/1245620_20250109021802_1.798c59b3976aa257e4d7.png",
+    "static/media/1245620_20250109023252_1.png": "/project_ur/static/media/1245620_20250109023252_1.eb4c76f0850c6a5489dd.png",
+    "static/media/1245620_20250105231837_1.png": "/project_ur/static/media/1245620_20250105231837_1.12a4391dda72f094fa65.png",
+    "static/media/1245620_20250109023339_1.png": "/project_ur/static/media/1245620_20250109023339_1.208cc1b844188660f3f5.png",
     "static/media/480_369.png": "/project_ur/static/media/480_369.61a0fe97861b12ea0006.png",
     "static/media/480_368.png": "/project_ur/static/media/480_368.2962a83c68b6d0ba1f57.png",
+    "static/media/1245620_20250109024110_1.png": "/project_ur/static/media/1245620_20250109024110_1.2ed4d4259bc194f71731.png",
     "static/media/toro6.png": "/project_ur/static/media/toro6.dd418c16f5f09a805992.png",
     "static/media/480_371.png": "/project_ur/static/media/480_371.00dec272205c287b4f70.png",
     "static/media/raze.png": "/project_ur/static/media/raze.3682651fadd5c83799c2.png",
@@ -23,6 +35,7 @@
     "static/media/480_364.jpg": "/project_ur/static/media/480_364.86647a8dc11a1a734dba.jpg",
     "static/media/480_366.jpg": "/project_ur/static/media/480_366.a271d6dca7bb2e0fcf96.jpg",
     "static/media/caratula3.jpg": "/project_ur/static/media/caratula3.98e872085d62019243af.jpg",
+    "static/media/413150_20250208001208_1.png": "/project_ur/static/media/413150_20250208001208_1.cd6669adccc1bd2c934e.png",
     "static/media/omen2.png": "/project_ur/static/media/omen2.11a0272155a7c61a3fba.png",
     "static/media/caratula1.jpg": "/project_ur/static/media/caratula1.a01823464e5c85a4586f.jpg",
     "static/media/omenchibi.png": "/project_ur/static/media/omenchibi.b0c871523b12a4e0faf1.png",
@@ -50,10 +63,10 @@
     "static/media/kurocursor.cur": "/project_ur/static/media/kurocursor.c083e50cae9fc15a14b6.cur",
     "static/media/torocursor2.cur": "/project_ur/static/media/torocursor2.3454992449efca07ff57.cur",
     "main.659acee2.css.map": "/project_ur/static/css/main.659acee2.css.map",
-    "main.74f646bb.js.map": "/project_ur/static/js/main.74f646bb.js.map"
+    "main.50839e4d.js.map": "/project_ur/static/js/main.50839e4d.js.map"
   },
   "entrypoints": [
     "static/css/main.659acee2.css",
-    "static/js/main.74f646bb.js"
+    "static/js/main.50839e4d.js"
   ]
 }
