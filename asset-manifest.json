@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project_ur/static/css/main.659acee2.css",
-    "main.js": "/project_ur/static/js/main.9a43ee0e.js",
+    "main.css": "/project_ur/static/css/main.c5d407b0.css",
+    "main.js": "/project_ur/static/js/main.ceda1ffb.js",
     "static/media/eldenring.mp4": "/project_ur/static/media/eldenring.caf233efad155013723c.mp4",
     "static/media/locurabao2.mp4": "/project_ur/static/media/locurabao2.11e8806f37f2aace3658.mp4",
     "static/media/ervideo.mp4": "/project_ur/static/media/ervideo.9fd7cfdd4806afcc80de.mp4",
@@ -37,10 +37,13 @@
     "static/media/caratula3.jpg": "/project_ur/static/media/caratula3.98e872085d62019243af.jpg",
     "static/media/413150_20250208001208_1.png": "/project_ur/static/media/413150_20250208001208_1.cd6669adccc1bd2c934e.png",
     "static/media/omen2.png": "/project_ur/static/media/omen2.11a0272155a7c61a3fba.png",
+    "static/media/toro1an.png": "/project_ur/static/media/toro1an.fa91208cacc9ab90e260.png",
     "static/media/caratula1.jpg": "/project_ur/static/media/caratula1.a01823464e5c85a4586f.jpg",
     "static/media/omenchibi.png": "/project_ur/static/media/omenchibi.b0c871523b12a4e0faf1.png",
     "static/media/omen3.png": "/project_ur/static/media/omen3.598dc446e0f939d3553b.png",
+    "static/media/toro3an.png": "/project_ur/static/media/toro3an.1270c0ebdca8c8f199d2.png",
     "static/media/toroinouesilueta.png": "/project_ur/static/media/toroinouesilueta.f5630deb0063fa4fd804.png",
+    "static/media/toro2an.png": "/project_ur/static/media/toro2an.5224066b294906c43487.png",
     "static/media/toro8.jpg": "/project_ur/static/media/toro8.13e8a1f0a6f5cacc0002.jpg",
     "static/media/caratula2.jpg": "/project_ur/static/media/caratula2.27aee71e914417b452cc.jpg",
     "static/media/toro7.jpg": "/project_ur/static/media/toro7.bda7070a2d117df6b895.jpg",
@@ -62,11 +65,11 @@
     "index.html": "/project_ur/index.html",
     "static/media/kurocursor.cur": "/project_ur/static/media/kurocursor.c083e50cae9fc15a14b6.cur",
     "static/media/torocursor2.cur": "/project_ur/static/media/torocursor2.3454992449efca07ff57.cur",
-    "main.659acee2.css.map": "/project_ur/static/css/main.659acee2.css.map",
-    "main.9a43ee0e.js.map": "/project_ur/static/js/main.9a43ee0e.js.map"
+    "main.c5d407b0.css.map": "/project_ur/static/css/main.c5d407b0.css.map",
+    "main.ceda1ffb.js.map": "/project_ur/static/js/main.ceda1ffb.js.map"
   },
   "entrypoints": [
-    "static/css/main.659acee2.css",
-    "static/js/main.9a43ee0e.js"
+    "static/css/main.c5d407b0.css",
+    "static/js/main.ceda1ffb.js"
   ]
 }
