@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project_ur/static/css/main.c5d407b0.css",
-    "main.js": "/project_ur/static/js/main.ceda1ffb.js",
+    "main.js": "/project_ur/static/js/main.929e97c2.js",
     "static/media/eldenring.mp4": "/project_ur/static/media/eldenring.caf233efad155013723c.mp4",
     "static/media/locurabao2.mp4": "/project_ur/static/media/locurabao2.11e8806f37f2aace3658.mp4",
     "static/media/ervideo.mp4": "/project_ur/static/media/ervideo.9fd7cfdd4806afcc80de.mp4",
@@ -26,15 +26,33 @@
     "static/media/1245620_20250109024110_1.png": "/project_ur/static/media/1245620_20250109024110_1.2ed4d4259bc194f71731.png",
     "static/media/toro6.png": "/project_ur/static/media/toro6.dd418c16f5f09a805992.png",
     "static/media/480_371.png": "/project_ur/static/media/480_371.00dec272205c287b4f70.png",
+    "static/media/baonueva14.jpg": "/project_ur/static/media/baonueva14.1b8975d25467e10ab8bd.jpg",
+    "static/media/baonueva12.jpg": "/project_ur/static/media/baonueva12.a36277ab160cef7085f7.jpg",
+    "static/media/baonueva18.jpg": "/project_ur/static/media/baonueva18.bca7cec98cd7265aead0.jpg",
+    "static/media/baonueva17.jpg": "/project_ur/static/media/baonueva17.23fec686076abe1be406.jpg",
+    "static/media/baonueva13.jpg": "/project_ur/static/media/baonueva13.086c6008eb882b096500.jpg",
+    "static/media/baonueva16.jpg": "/project_ur/static/media/baonueva16.63812f4b77e0064d325f.jpg",
+    "static/media/baonueva15.jpg": "/project_ur/static/media/baonueva15.9170cf8f74e25c02da04.jpg",
+    "static/media/baonueva4.jpg": "/project_ur/static/media/baonueva4.53fb150ba45d42926a49.jpg",
+    "static/media/baonueva10.jpg": "/project_ur/static/media/baonueva10.a326a91d3a6546d9c11f.jpg",
+    "static/media/baonueva11.jpg": "/project_ur/static/media/baonueva11.fbc066dc56d944f58d95.jpg",
+    "static/media/baonueva9.jpg": "/project_ur/static/media/baonueva9.e238a6fa1a10b02ceaea.jpg",
+    "static/media/baonueva2.jpg": "/project_ur/static/media/baonueva2.226481f3b9816abbcdf1.jpg",
     "static/media/raze.png": "/project_ur/static/media/raze.3682651fadd5c83799c2.png",
     "static/media/480_370.jpg": "/project_ur/static/media/480_370.32baa72a0959258d138d.jpg",
     "static/media/raze2.png": "/project_ur/static/media/raze2.e09bff12061574a7c172.png",
     "static/media/raze3.png": "/project_ur/static/media/raze3.f74c231d8c7884411534.png",
+    "static/media/baonueva6.jpg": "/project_ur/static/media/baonueva6.98438cfb952d28b4651c.jpg",
+    "static/media/baonueva5.jpg": "/project_ur/static/media/baonueva5.43f0c72da9f741f25123.jpg",
+    "static/media/baonueva1.jpg": "/project_ur/static/media/baonueva1.abdfdabd9f04660b3203.jpg",
+    "static/media/baonueva3.jpg": "/project_ur/static/media/baonueva3.daed1564b5fef07e9168.jpg",
     "static/media/480_367.jpg": "/project_ur/static/media/480_367.99e81e9b5346b615f3d7.jpg",
     "static/media/480_361.jpg": "/project_ur/static/media/480_361.9995089785f5fdfb43a1.jpg",
     "static/media/480_364.jpg": "/project_ur/static/media/480_364.86647a8dc11a1a734dba.jpg",
     "static/media/480_366.jpg": "/project_ur/static/media/480_366.a271d6dca7bb2e0fcf96.jpg",
     "static/media/caratula3.jpg": "/project_ur/static/media/caratula3.98e872085d62019243af.jpg",
+    "static/media/baonueva7.jpg": "/project_ur/static/media/baonueva7.daad049afee2c7cf6f01.jpg",
+    "static/media/baonueva8.jpg": "/project_ur/static/media/baonueva8.bca9e7f4dcb6b004a339.jpg",
     "static/media/413150_20250208001208_1.png": "/project_ur/static/media/413150_20250208001208_1.cd6669adccc1bd2c934e.png",
     "static/media/omen2.png": "/project_ur/static/media/omen2.11a0272155a7c61a3fba.png",
     "static/media/toro1an.png": "/project_ur/static/media/toro1an.fa91208cacc9ab90e260.png",
@@ -66,10 +84,10 @@
     "static/media/kurocursor.cur": "/project_ur/static/media/kurocursor.c083e50cae9fc15a14b6.cur",
     "static/media/torocursor2.cur": "/project_ur/static/media/torocursor2.3454992449efca07ff57.cur",
     "main.c5d407b0.css.map": "/project_ur/static/css/main.c5d407b0.css.map",
-    "main.ceda1ffb.js.map": "/project_ur/static/js/main.ceda1ffb.js.map"
+    "main.929e97c2.js.map": "/project_ur/static/js/main.929e97c2.js.map"
   },
   "entrypoints": [
     "static/css/main.c5d407b0.css",
-    "static/js/main.ceda1ffb.js"
+    "static/js/main.929e97c2.js"
   ]
 }
