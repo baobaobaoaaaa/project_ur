@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import toroImage from "project_ur/src/assets/presentation/toroinouesilueta.png";
 
 
+
 const IntroductionScreen = ({ onFinish }) => {
+
+  const version = "1.0.5 - Actualizado 22 de feb de 2025";
+
   const messages = [
     "¡Hola Bao! Soy Toro.",
     "Espero que disfrutes esta página.",
@@ -64,6 +68,7 @@ const IntroductionScreen = ({ onFinish }) => {
       }, 1500); // Tiempo suficiente para el fade-in
     }, 1500); // Tiempo suficiente para la animación de las cortinas
   };
+  
 
   return (
     <>
@@ -182,6 +187,28 @@ const IntroductionScreen = ({ onFinish }) => {
             }}
           >
             Saltar Introducción
+          </motion.button>
+
+          {/* Version */}
+          <motion.button
+            whileHover={{ scale: 1.1, rotate: 1.5 }}
+            whileTap={{ scale: 0.9 }}
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              right: "20px",
+              backgroundColor: "rgba(255, 105, 180, 0.8)",
+              color: "white",
+              padding: "10px 15px",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              fontSize: "14px",
+              boxShadow: "0px 4px 8px rgba(0,0,0,0.2)",
+              fontWeight: "bold",
+            }}
+          >
+            Version: {version}
           </motion.button>
 
           {/* Globo de texto */}

@@ -18,6 +18,27 @@ import "project_ur/src/CarrouselStyles.css";
 import ScrollProgressWheel from "./ScrollProgressWheel";
 import { AnimatePresence, motion } from "framer-motion";
 
+// imagenes nuevas 22-02-25
+import imagebaonueva1 from "../assets/baonueva1.jpg";
+import imagebaonueva2 from "../assets/baonueva2.jpg";
+import imagebaonueva3 from "../assets/baonueva3.jpg";
+import imagebaonueva4 from "../assets/baonueva4.jpg";
+import imagebaonueva5 from "../assets/baonueva5.jpg";
+import imagebaonueva6 from "../assets/baonueva6.jpg";
+import imagebaonueva7 from "../assets/baonueva7.jpg";
+import imagebaonueva8 from "../assets/baonueva8.jpg";
+import imagebaonueva9 from "../assets/baonueva9.jpg";
+import imagebaonueva10 from "../assets/baonueva10.jpg";
+import imagebaonueva11 from "../assets/baonueva11.jpg";
+import imagebaonueva12 from "../assets/baonueva12.jpg";
+import imagebaonueva13 from "../assets/baonueva13.jpg";
+import imagebaonueva14 from "../assets/baonueva14.jpg";
+import imagebaonueva15 from "../assets/baonueva15.jpg";
+import imagebaonueva16 from "../assets/baonueva16.jpg";
+import imagebaonueva17 from "../assets/baonueva17.jpg";
+import imagebaonueva18 from "../assets/baonueva18.jpg";
+
+
 import img1 from "../assets/480_361.jpg";
 import img2 from "../assets/480_364.jpg";
 import img3 from "../assets/480_366.jpg";
@@ -46,22 +67,55 @@ export const Carousel = ({
   isModalOpen,
   onAchievementUnlock,
 }) => {
-  // console.log("onAchievementUnlock recibido en Carousel.jsx:", onAchievementUnlock);
   const swiperRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [currentImage, setCurrentImage] = useState("");
   const [slideChangeCount, setSlideChangeCount] = useState(0);
   const [hasPausedCarousel, setHasPausedCarousel] = useState(false);
-  const [modalOpenCount, setModalOpenCount] = useState(0); //contador de veces que se abrio el modal
+  const [modalOpenCount, setModalOpenCount] = useState(0);
   const [hasLoggedManualChange, setHasLoggedManualChange] = useState(false);
   const [manualSlideChangeCount, setManualSlideChangeCount] = useState(0);
 
-  const calculateProgress = () => {
-    return activeIndex / (images.length - 1);
+  // Nuevo estado para el progreso del scroll
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Función para calcular el progreso del scroll
+  const calculateScrollProgress = () => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current;
+      const totalSlides = swiper.slides.length;
+      const currentSlide = swiper.realIndex + 1; // +1 porque el índice comienza en 0
+      const progress = (currentSlide / totalSlides) * 100;
+      setScrollProgress(progress);
+    }
   };
 
+  // Efecto para calcular el progreso cada vez que cambia el slide
+  useEffect(() => {
+    calculateScrollProgress();
+  }, [activeIndex]);
+
   const images = [
+    // imagenes nuevas 22-02-25
+    { src: imagebaonueva1, caption: "Mimiendo" },
+    { src: imagebaonueva2, caption: "Con el pipe" },
+    { src: imagebaonueva3, caption: "Comiendo" },
+    { src: imagebaonueva4, caption: "Juan Guarnizo y un huevo de pascua " },
+    { src: imagebaonueva5, caption: "Tutito" },
+    { src: imagebaonueva6, caption: "Festival de medusas" },
+    { src: imagebaonueva7, caption: "Nuestra primera casita" },
+    { src: imagebaonueva8, caption: "Posando" },
+    { src: imagebaonueva9, caption: "Bao como conejo en el festival del huevo" },
+    { src: imagebaonueva10, caption: "Bao como coneja en el festival del huevo" },
+    { src: imagebaonueva11, caption: "Mejorando la foto" },
+    { src: imagebaonueva12, caption: "Bailando" },
+    { src: imagebaonueva13, caption: "Bailando" },
+    { src: imagebaonueva14, caption: "Wenos pasos" },
+    { src: imagebaonueva15, caption: "Mas baile" },
+    { src: imagebaonueva16, caption: "No nos cansamos de bailar" },
+    { src: imagebaonueva17, caption: "Hasta el piso" },
+    { src: imagebaonueva18, caption: "Finalmente" },
     { src: img1, caption: "Bajo la luna" },
     { src: img2, caption: "Navegando" },
     { src: img3, caption: "Posando" },
@@ -92,7 +146,6 @@ export const Carousel = ({
         swiperRef.current.autoplay.start();
       } else {
         swiperRef.current.autoplay.stop();
-        // logro pausar manualmente
         if (!hasPausedCarousel && onAchievementUnlock) {
           onAchievementUnlock(
             "carrusel",
@@ -105,13 +158,13 @@ export const Carousel = ({
       setIsPaused(!isPaused);
     }
   };
+
   const handleSlideChange = (swiper) => {
     if (!swiper.params.autoplay.enabled) {
-      // Cambio manual detectado
       handleManualSlideChange();
-    } else {
     }
   };
+
   const handleTransitionStart = () => {
     console.log("Transición iniciada");
   };
@@ -177,9 +230,7 @@ export const Carousel = ({
     setIsModalOpen(true);
     setModalOpenCount((prev) => {
       const newCount = prev + 1;
-      // console.log("contador de veces que se abrio el modal",newCount);
       if (newCount === 1 && onAchievementUnlock) {
-        // console.log("primer recuerdo");
         onAchievementUnlock(
           "carrusel",
           "Primer Recuerdo",
@@ -187,7 +238,6 @@ export const Carousel = ({
         );
       }
       if (newCount === 3 && onAchievementUnlock) {
-        // console.log("tercer recuerdo");
         onAchievementUnlock(
           "carrusel",
           "Tercer Recuerdo",
@@ -195,7 +245,6 @@ export const Carousel = ({
         );
       }
       if (newCount === 5 && onAchievementUnlock) {
-        // console.log("quinto recuerdo");
         onAchievementUnlock(
           "carrusel",
           "Viajera Inalcanzable",
@@ -285,7 +334,6 @@ export const Carousel = ({
                 }}
                 onClick={() => openModal(image.src)}
               />
-              {/* Boton de descarga dentro del carrusel */}
               <a
                 href={image.src}
                 download={`imagen-${index + 1}.jpg`}
@@ -314,6 +362,28 @@ export const Carousel = ({
         </div>
       </Swiper>
 
+      {/* Barra de progreso */}
+      <div
+        style={{
+          width: "100%",
+          height: "5px",
+          backgroundColor: "lightgray",
+          borderRadius: "5px",
+          marginTop: "10px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            width: `${scrollProgress}%`,
+            height: "100%",
+            backgroundColor: "#ff758c",
+            borderRadius: "5px",
+            transition: "width 0.3s ease",
+          }}
+        />
+      </div>
+
       <div
         style={{
           display: "flex",
@@ -328,49 +398,47 @@ export const Carousel = ({
           padding: "30px 55px",
           background: "rgba(255, 255, 255, 0.8)",
           borderRadius: "1px",
-         
         }}
       >
         <AnimatePresence mode="wait">
-  <motion.div
-    key={activeIndex} // La clave única asegura que se re-renderice
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.5 }}
-    style={{
-      flex: 1,
-      textAlign: "left",
-      fontSize: "40px",
-      color: "#ff758c",
-      fontWeight: "bold",
-      fontFamily: "'Pacifico', cursive",
-      overflow: "hidden",
-      display: "inline-block",
-    }}
-  >
-    {images[activeIndex].caption.split(" ").map((char, index) => (
-      <motion.span
-        key={index}
-        initial={{ opacity: 0, y: "100%" }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "-100%" }}
-        transition={{
-          duration: 0.25,
-          delay: index * 0.01, // Retraso para el efecto de ola
-          ease: "easeOut",
-        }}
-        style={{
-          display: "inline-block",
-          whiteSpace: char === " " ? "pre" : "normal", // Mantenimiento del espacio
-        }}
-      >
-        {char === " " ? "\u00A0" : char} {/* Espacio no envolvente */}
-      </motion.span>
-    ))}
-  </motion.div>
-</AnimatePresence>
-
+          <motion.div
+            key={activeIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              flex: 1,
+              textAlign: "left",
+              fontSize: "40px",
+              color: "#ff758c",
+              fontWeight: "bold",
+              fontFamily: "'Pacifico', cursive",
+              overflow: "hidden",
+              display: "inline-block",
+            }}
+          >
+            {images[activeIndex].caption.split(" ").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: "100%" }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: "-100%" }}
+                transition={{
+                  duration: 0.25,
+                  delay: index * 0.01,
+                  ease: "easeOut",
+                }}
+                style={{
+                  display: "inline-block",
+                  whiteSpace: char === " " ? "pre" : "normal",
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         <div
           style={{
@@ -441,7 +509,6 @@ export const Carousel = ({
                 boxShadow: "0 8px 20px rgba(255, 255, 255, 0.5)",
               }}
             />
-            {/* Boton de descarga dentro del Modal */}
             <a
               href={currentImage}
               download={`imagen-${activeIndex + 1}.jpg`}
@@ -459,7 +526,6 @@ export const Carousel = ({
             >
               <FaDownload /> Descargar
             </a>
-            {/* Boton de cerrar en el modal */}
             <a
               style={{
                 position: "absolute",
